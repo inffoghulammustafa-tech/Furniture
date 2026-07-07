@@ -1,0 +1,6 @@
+{
+  "name": "Holzcraft",
+  "description": "Bespoke handcrafted solid timber furniture atelier website featuring interactive size customizers, dynamic mass weights estimation, and Kabir - our AI woodwork advisor.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
