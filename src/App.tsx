@@ -19,6 +19,7 @@ import Reviews from './components/Reviews';
 import Footer from './components/Footer';
 import AiAdvisor from './components/AiAdvisor';
 import QuoteBasket from './components/QuoteBasket';
+import PrivacyPolicyModal from './components/PrivacyPolicyModal';
 import { Product, CustomConfig, QuoteItem } from './types';
 import { ChevronUp, Check, Info } from 'lucide-react';
 
@@ -29,6 +30,7 @@ export default function App() {
   const [selectedConfigProduct, setSelectedConfigProduct] = useState<Product | null>(null);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isAdvisorOpen, setIsAdvisorOpen] = useState(false);
+  const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
   
   // Custom Toast state
   const [toastMessage, setToastMessage] = useState<string | null>(null);
@@ -174,6 +176,7 @@ export default function App() {
         {/* Collections Room Directory */}
         <Collections
           onSelectCollection={handleSelectCategoryFromCollections}
+          onOpenPrivacy={() => setIsPrivacyOpen(true)}
         />
 
         {/* Product Catalog Display and inspection detail modals */}
@@ -205,7 +208,7 @@ export default function App() {
       </main>
 
       {/* Footer Block */}
-      <Footer onSetCategory={setSelectedCategory} />
+      <Footer onSetCategory={setSelectedCategory} onOpenPrivacy={() => setIsPrivacyOpen(true)} />
 
       {/* Slide-out Sidebar: Kabir, AI Wood Advisor Chat */}
       <AiAdvisor
@@ -224,6 +227,15 @@ export default function App() {
       />
 
       {/* Global Status Toast Notification */}
+      <AnimatePresence>
+        {isPrivacyOpen && (
+          <PrivacyPolicyModal
+            isOpen={isPrivacyOpen}
+            onClose={() => setIsPrivacyOpen(false)}
+          />
+        )}
+      </AnimatePresence>
+
       <AnimatePresence>
         {toastMessage && (
           <motion.div

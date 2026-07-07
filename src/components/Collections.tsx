@@ -22,12 +22,9 @@ import {
   MapPin,
   Mail,
   ArrowLeft,
-  ChevronUp
+  ChevronUp,
+  Home
 } from 'lucide-react';
-
-interface CollectionsProps {
-  onSelectCollection: (category: string) => void;
-}
 
 const NEW_ARRIVALS = [
   // Page 1 (Exactly as in the user's image)
@@ -511,7 +508,12 @@ const PRODUCTS_DATABASE: Record<string, ProductDetailData> = {
   }
 };
 
-export default function Collections({ onSelectCollection }: CollectionsProps) {
+interface CollectionsProps {
+  onSelectCollection: (category: string) => void;
+  onOpenPrivacy?: () => void;
+}
+
+export default function Collections({ onSelectCollection, onOpenPrivacy }: CollectionsProps) {
   const [currentPage, setCurrentPage] = useState(0); // 0 or 1
   const [slideDirection, setSlideDirection] = useState(1); // 1 or -1
 
@@ -521,6 +523,7 @@ export default function Collections({ onSelectCollection }: CollectionsProps) {
   
   const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
   const [activeDetailImage, setActiveDetailImage] = useState<string>('');
+  const [showPrivacy, setShowPrivacy] = useState(false);
 
   // Form state
   const [clientName, setClientName] = useState('');
@@ -1033,6 +1036,83 @@ export default function Collections({ onSelectCollection }: CollectionsProps) {
                 </div>
 
               </div>
+
+              {/* ================= BESPOKE AND CONTACT DETAILS ROW (Matching the user's provided image) ================= */}
+              <div className="pt-12 border-t border-stone-200" id="bespoke-contact-info-section">
+                <div className="bg-stone-50/85 rounded-[2.5rem] p-8 md:p-12 border border-stone-200/50 shadow-sm flex flex-col justify-center items-center">
+                  <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16 text-center">
+                    
+                    {/* ADDRESS COLUMN */}
+                    <div className="flex flex-col items-center space-y-4">
+                      <div className="p-3 bg-white rounded-full shadow-sm border border-stone-100/80 text-stone-900">
+                        <Home className="w-6 h-6 stroke-[1.25]" />
+                      </div>
+                      <h4 className="font-sans text-[11px] font-bold tracking-[0.2em] text-stone-950 uppercase">
+                        ADDRESS
+                      </h4>
+                      <div className="space-y-3 text-xs text-stone-600 font-sans leading-relaxed max-w-sm">
+                        <p>
+                          <span className="font-bold text-stone-900 block md:inline">Main Branch: </span>
+                          AL-madina tower, Sheikhupura Rd, Near Misaq-ul-mall, Faisalabad
+                        </p>
+                        <p>
+                          <span className="font-bold text-stone-900 block md:inline">Executive Branch: </span>
+                          Basement SB Store, Harianwala Chowk, D-Ground, Faisalabad
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* PHONE NUMBER COLUMN */}
+                    <div className="flex flex-col items-center space-y-4">
+                      <div className="p-3 bg-white rounded-full shadow-sm border border-stone-100/80 text-stone-900">
+                        <Phone className="w-6 h-6 stroke-[1.25]" />
+                      </div>
+                      <h4 className="font-sans text-[11px] font-bold tracking-[0.2em] text-stone-950 uppercase">
+                        PHONE NUMBER
+                      </h4>
+                      <div className="space-y-2.5 text-xs text-stone-600 font-sans leading-relaxed">
+                        <a 
+                          href="tel:03041111857"
+                          className="block font-medium hover:text-amber-800 transition-colors font-sans text-stone-700"
+                        >
+                          UAN 0304 1111857
+                        </a>
+                        <a 
+                          href="https://wa.me/923226638762" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 hover:text-emerald-700 transition-all duration-200 bg-white border border-stone-200/60 rounded-full px-4 py-1.5 shadow-xs"
+                        >
+                          <svg className="w-4 h-4 text-emerald-600 fill-current shrink-0" viewBox="0 0 24 24">
+                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.725 1.45 5.489 0 9.954-4.466 9.957-9.96.002-2.661-1.026-5.163-2.897-7.037C16.562 1.733 14.067.702 11.4.701c-5.493 0-9.96 4.467-9.963 9.962-.001 2.015.525 3.987 1.524 5.734L1.932 20.33l4.715-1.176zM18.14 14.8c-.34-.17-2.01-.99-2.321-1.1-.31-.11-.537-.17-.76.17-.223.34-.863 1.1-.1 1.3.18.2.36.23.68.06.32-.17 1.34-.49 2.56-1.58.95-.85 1.6-1.9 1.78-2.24.18-.34.02-.52-.15-.69-.15-.15-.34-.39-.5-.59-.16-.2-.22-.34-.33-.57-.11-.23-.06-.43.03-.6.09-.17.76-1.84 1.05-2.54.28-.68.56-.59.76-.6.2-.01.43-.01.66-.01.23 0 .61.09.93.43.32.34 1.22 1.19 1.22 2.91s-1.25 3.38-1.42 3.61c-.17.23-2.45 3.74-5.93 5.24-1.14.49-2.03.78-2.73.99-.85.27-1.63.23-2.24.14-.68-.1-2.01-.82-2.29-1.57-.28-.75-.28-1.39-.2-1.52.08-.13.3-.23.64-.4z"/>
+                          </svg>
+                          <span className="font-mono text-stone-900 font-semibold text-[13px] tracking-tight">0322-6638762</span>
+                        </a>
+                      </div>
+                    </div>
+
+                    {/* EMAIL COLUMN */}
+                    <div className="flex flex-col items-center space-y-4">
+                      <div className="p-3 bg-white rounded-full shadow-sm border border-stone-100/80 text-stone-900">
+                        <Mail className="w-6 h-6 stroke-[1.25]" />
+                      </div>
+                      <h4 className="font-sans text-[11px] font-bold tracking-[0.2em] text-stone-950 uppercase">
+                        EMAIL
+                      </h4>
+                      <div className="text-xs text-stone-600 font-sans leading-relaxed">
+                        <a 
+                          href="mailto:info@furnitureholz.com"
+                          className="hover:text-amber-800 transition-colors duration-200 font-medium tracking-wide block text-stone-750"
+                        >
+                          info@furnitureholz.com
+                        </a>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
             </div>
 
             {/* ================= UNIFIED SHOWROOMS FOOTER (Styled exactly as in the user's first image with animations) ================= */}
@@ -1133,14 +1213,19 @@ export default function Collections({ onSelectCollection }: CollectionsProps) {
                     >
                       Contact Us
                     </button>
-                    <a 
-                      href="https://furnitureholz.com/privacy-policy" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="hover:text-amber-500 hover:translate-x-1.5 transition-all duration-300 block text-stone-400 text-sm py-0.5 font-sans"
+                    <button 
+                      onClick={() => {
+                        if (onOpenPrivacy) {
+                          onOpenPrivacy();
+                        } else {
+                          setShowPrivacy(true);
+                        }
+                        triggerNotification("Opening Privacy Policy");
+                      }}
+                      className="hover:text-amber-500 hover:translate-x-1.5 transition-all duration-300 block text-stone-400 text-sm py-0.5 font-sans cursor-pointer text-left w-full"
                     >
                       Privacy Policy
-                    </a>
+                    </button>
                   </div>
                 </div>
 
@@ -1428,6 +1513,163 @@ export default function Collections({ onSelectCollection }: CollectionsProps) {
             </div>
           );
         })()}
+      </AnimatePresence>
+
+      {/* ================= PRIVACY POLICY MODAL ================= */}
+      <AnimatePresence>
+        {showPrivacy && (
+          <div className="fixed inset-0 bg-stone-950/85 backdrop-blur-md z-55 flex items-center justify-center p-4 sm:p-6 md:p-8 font-sans">
+            {/* Backdrop click close */}
+            <div 
+              className="absolute inset-0 cursor-pointer" 
+              onClick={() => setShowPrivacy(false)} 
+            />
+
+            {/* Modal Card */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative w-full max-w-4xl rounded-3xl bg-[#151309] text-ivory shadow-2xl border border-oak/35 p-6 md:p-10 z-10 max-h-[85vh] flex flex-col"
+            >
+              {/* Close Button */}
+              <button 
+                onClick={() => setShowPrivacy(false)} 
+                className="absolute top-5 right-5 p-2 text-ivory-dim/50 hover:text-oak hover:bg-white/5 rounded-full transition-all duration-300 z-20 cursor-pointer"
+                aria-label="Close Privacy Policy"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              {/* Header */}
+              <div className="mb-6 pb-4 border-b border-line/40 flex-shrink-0">
+                <span className="font-mono text-xs uppercase tracking-[0.2em] text-oak block mb-1">Company Information</span>
+                <h2 className="text-2xl md:text-3xl font-display font-semibold text-ivory uppercase tracking-tight flex items-center gap-3">
+                  <span className="p-1.5 bg-oak/10 text-oak rounded-xl border border-oak/30 flex items-center justify-center">
+                    <ShieldCheck className="w-6 h-6" />
+                  </span>
+                  Privacy Policy
+                </h2>
+                <p className="text-xs text-ivory-dim/60 mt-1.5">
+                  Last updated: July 2026 • Furniture Holz Official
+                </p>
+              </div>
+
+              {/* Scrollable Content Container */}
+              <div className="overflow-y-auto pr-2 md:pr-4 space-y-6 text-sm text-ivory-dim/80 leading-relaxed font-sans max-h-[60vh] scrollbar-thin scrollbar-thumb-oak/20 scrollbar-track-transparent">
+                <p>
+                  This privacy policy sets out how <strong className="text-ivory font-bold">Furniture Holz</strong> uses and protects any information that you give to Furniture Holz when you use this website.
+                </p>
+
+                <p>
+                  Furniture Holz is committed to ensuring that your privacy is protected. Should we ask you to provide certain information by which you can be identified when using this website, then you can be assured that it will only be used in accordance with this privacy statement.
+                </p>
+
+                <p>
+                  Furniture Holz may change this policy from time to time by updating this page. You should check this page from time to time to ensure that you are happy with any changes.
+                </p>
+
+                <div className="space-y-3 pt-3 border-t border-line/20">
+                  <h3 className="text-base font-semibold text-oak uppercase tracking-wider font-mono">What we collect</h3>
+                  <p>We may collect the following information:</p>
+                  <ul className="list-disc pl-5 space-y-2 text-ivory-dim/95">
+                    <li>Name and payment details</li>
+                    <li>Contact information including email address</li>
+                    <li>Demographic information such as postcode, preferences and interests</li>
+                    <li>Other information relevant to customer surveys and/or offers</li>
+                  </ul>
+                </div>
+
+                <div className="space-y-3 pt-3 border-t border-line/20">
+                  <h3 className="text-base font-semibold text-oak uppercase tracking-wider font-mono">What we do with the information we gather</h3>
+                  <p>We require this information to understand your needs and provide you with a better service, and in particular for the following reasons:</p>
+                  <ul className="list-disc pl-5 space-y-2.5 text-ivory-dim/95">
+                    <li>To process your order and obtain payment</li>
+                    <li>Internal record keeping</li>
+                    <li>We may use the information to improve our products and services</li>
+                    <li>We may periodically send promotional emails about new products, special offers or other information which we think you may find interesting using the email address which you have provided</li>
+                    <li>From time to time, we may also use your information to contact you for market research purposes. We may contact you by email, phone, fax or mail. We may use the information to customise the website according to your interests</li>
+                  </ul>
+                </div>
+
+                <div className="space-y-3 pt-3 border-t border-line/20">
+                  <h3 className="text-base font-semibold text-oak uppercase tracking-wider font-mono">Security</h3>
+                  <p>
+                    We are committed to ensuring that your information is secure. In order to prevent unauthorised access or disclosure, we have put in place suitable physical, electronic and managerial procedures to safeguard and secure the information we collect online.
+                  </p>
+                </div>
+
+                <div className="space-y-3 pt-3 border-t border-line/20">
+                  <h3 className="text-base font-semibold text-oak uppercase tracking-wider font-mono">How we use cookies</h3>
+                  <p>
+                    A cookie is a small file which asks permission to be placed on your computer’s hard drive. Once you agree, the file is added and the cookie helps analyse web traffic or lets you know when you visit a particular site. Cookies allow web applications to respond to you as an individual. The web application can tailor its operations to your needs, likes and dislikes by gathering and remembering information about your preferences.
+                  </p>
+                  <p>
+                    We use traffic log cookies to identify which pages are being used. This helps us analyse data about web page traffic and improve our website in order to tailor it to customer needs. We only use this information for statistical analysis purposes and then the data is removed from the system.
+                  </p>
+                  <p>
+                    Overall, cookies help us provide you with a better website, by enabling us to monitor which pages you find useful and which you do not. A cookie in no way gives us access to your computer or any information about you, other than the data you choose to share with us.
+                  </p>
+                  <p>
+                    You can choose to accept or decline cookies. Most web browsers automatically accept cookies, but you can usually modify your browser setting to decline cookies if you prefer. This may prevent you from taking full advantage of the website.
+                  </p>
+                </div>
+
+                <div className="space-y-3 pt-3 border-t border-line/20">
+                  <h3 className="text-base font-semibold text-oak uppercase tracking-wider font-mono">Links to other websites</h3>
+                  <p>
+                    Our website may contain links to other websites of interest. However, once you have used these links to leave our site, you should note that we do not have any control over that other website. Therefore, we cannot be responsible for the protection and privacy of any information which you provide whilst visiting such sites and such sites are not governed by this privacy statement. You should exercise caution and look at the privacy statement applicable to the website in question.
+                  </p>
+                </div>
+
+                <div className="space-y-4 pt-3 border-t border-line/20">
+                  <h3 className="text-base font-semibold text-oak uppercase tracking-wider font-mono">Data aggregation, analytics and profile creation</h3>
+                  <p>
+                    We may analyse your browsing behaviour to draw inferences and create profiles about your personal preferences and behaviours. We may then use such information for the purposes described below:
+                  </p>
+                  <div className="pl-4 border-l border-oak/30 space-y-3 text-ivory-dim/90">
+                    <p className="font-semibold text-ivory">Behavioural advertising and cross platform targeting</p>
+                    <div>
+                      <p className="font-bold text-oak text-xs uppercase font-mono">(a) Served by us</p>
+                      <p className="pl-2 mt-1">We may use your information (including profile data) to serve you with advertising, which is relevant to you, on our websites and the websites of third parties.</p>
+                    </div>
+                    <div>
+                      <p className="font-bold text-oak text-xs uppercase font-mono">(b) Served by third parties on our websites</p>
+                      <p className="pl-2 mt-1">Advertisers or other third parties using our website may also engage in behavioural advertising and use cookies and web beacons in the manner described above. We do not control these advertisers or other parties’ use of cookies or web beacons or what they do with the information they collect.</p>
+                    </div>
+                    <div>
+                      <p className="font-bold text-oak text-xs uppercase font-mono">(c) Served by third parties on third party websites</p>
+                      <p className="pl-2 mt-1">We may provide your personal information (including profile data) to third parties who may then use it in combination with personal information that they have collected from you to serve you with relevant advertising on third party websites.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-3 pt-3 border-t border-line/20">
+                  <h3 className="text-base font-semibold text-oak uppercase tracking-wider font-mono">Controlling your personal information</h3>
+                  <p>You may choose to restrict the collection or use of your personal information in the following ways:</p>
+                  <ul className="list-disc pl-5 space-y-2 text-ivory-dim/95">
+                    <li>Whenever you are asked to fill in a form on the website, look for the box that you can click to indicate that you do not want the information to be used by anybody for direct marketing purposes</li>
+                    <li>If you have previously agreed to us using your personal information for direct marketing purposes, you may change your mind at any time by writing to or emailing us</li>
+                    <li>We will not sell, distribute or lease your personal information to third parties unless we have your permission or are required by law to do so. We may use your personal information to send you promotional information about third parties which we think you may find interesting if you tell us that you wish this to happen.</li>
+                    <li>You may request details of personal information which we hold about you under the Data Protection Act 1998. A small fee will be payable. If you would like a copy of the information held on you please write to us.</li>
+                    <li>If you believe that any information we are holding on you is incorrect or incomplete, please write to or email us as soon as possible. We will promptly correct any information found to be incorrect.</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Footer inside Modal */}
+              <div className="mt-6 pt-4 border-t border-line/40 flex justify-between items-center text-[11px] text-ivory-dim/50 font-mono flex-shrink-0">
+                <span>© FURNITURE HOLZ LEGAL DEPT</span>
+                <button 
+                  onClick={() => setShowPrivacy(false)}
+                  className="px-4 py-2 bg-oak/10 hover:bg-oak text-oak hover:text-white rounded-lg border border-oak/30 transition-all duration-300 font-sans font-bold uppercase tracking-wider text-[10px] cursor-pointer"
+                >
+                  Understood & Close
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
       </AnimatePresence>
 
       {/* ================= TOAST STATUS BANNER ================= */}

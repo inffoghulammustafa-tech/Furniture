@@ -8,9 +8,10 @@ import Logo from './Logo';
 
 interface FooterProps {
   onSetCategory?: (cat: string) => void;
+  onOpenPrivacy?: () => void;
 }
 
-export default function Footer({ onSetCategory }: FooterProps) {
+export default function Footer({ onSetCategory, onOpenPrivacy }: FooterProps) {
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -203,9 +204,17 @@ export default function Footer({ onSetCategory }: FooterProps) {
         <div className="border-t border-line pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-ivory-dim/60">
           <p>&copy; {currentYear} Holzcraft Timber Atelier. All rights reserved.</p>
           <div className="flex gap-6">
-            <a href="#privacy" className="hover:text-oak transition-colors">
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                if (onOpenPrivacy) {
+                  onOpenPrivacy();
+                }
+              }}
+              className="hover:text-oak transition-colors text-ivory-dim/60 cursor-pointer bg-transparent border-none p-0 text-xs"
+            >
               Privacy Policy
-            </a>
+            </button>
             <a href="#terms" className="hover:text-oak transition-colors">
               Terms of Service
             </a>
