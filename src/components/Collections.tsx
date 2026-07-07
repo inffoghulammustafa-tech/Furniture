@@ -87,56 +87,56 @@ const NEW_ARRIVALS = [
     id: 'arr-9',
     name: 'High Living L Shape 7 Seater Velvet Full Gauge Solid Wood Sofa',
     tag: 'L-Shape',
-    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=600',
+    image: 'https://furnitureholz.com/wp-content/uploads/2021/04/8-Seater-Sofa-Set-600x420.jpg',
     status: 'Available'
   },
   {
     id: 'arr-10',
     name: 'Shisham Wood Chinioti Swing / Jhula with Brass Chains',
     tag: 'Traditional Swing',
-    image: 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&q=80&w=600',
+    image: 'https://furnitureholz.com/wp-content/uploads/2021/04/Chinioti-Shisham-Wood-Jhola-600x420.jpg',
     status: 'Available'
   },
   {
     id: 'arr-11',
     name: 'Versace Inlay Crafted Sissoo Wood 3 Table Nest Set',
     tag: 'Inlay Premium',
-    image: 'https://images.unsplash.com/photo-1532372320978-9b4d7a92b24d?auto=format&fit=crop&q=80&w=600',
+    image: 'https://furnitureholz.com/wp-content/uploads/2021/04/Versace-Shisham-Wood-3-Table-Net-Set-600x420.jpg',
     status: 'Available'
   },
   {
     id: 'arr-12',
     name: 'Chinioti Crafted Silver Deco Moora Chair Set',
     tag: 'Chinioti Crafted',
-    image: 'https://images.unsplash.com/photo-1592078615290-033ee584e267?auto=format&fit=crop&q=80&w=600',
+    image: 'https://furnitureholz.com/wp-content/uploads/2021/04/Chinioti-Moora-Chair-600x420.jpg',
     status: 'Available'
   },
   {
     id: 'arr-13',
     name: 'Mughal Heritage Handcarved Solid Teak Console Mirror',
     tag: 'Royal Teak',
-    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=600',
+    image: 'https://furnitureholz.com/wp-content/uploads/2021/04/Console-Shisham-Carved-Wood-600x420.jpg',
     status: 'Available'
   },
   {
     id: 'arr-14',
     name: 'Royal Sovereign Double Cushion Sheesham Rocking Chair',
     tag: 'Rocking Chair',
-    image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&q=80&w=600',
+    image: 'https://furnitureholz.com/wp-content/uploads/2021/04/Chase-Lounge-Bedroom-Sofa-Chair-600x420.jpg',
     status: 'Available'
   },
   {
     id: 'arr-15',
     name: 'Kalyar Geometric Lattice Carved Partition Screen',
     tag: 'Lattice Screen',
-    image: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&q=80&w=600',
+    image: 'https://i.pinimg.com/1200x/8c/1d/64/8c1d6412275f03784cca7824e7f0c317.jpg',
     status: 'Available'
   },
   {
     id: 'arr-16',
     name: 'Presidential Hand-Sculptured Walnut Dressing Table',
     tag: 'Bespoke Walnut',
-    image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=600',
+    image: 'https://i.pinimg.com/1200x/b3/2c/13/b32c136f377ff5adbb10b7fb3c5d1f38.jpg',
     status: 'Available'
   }
 ];
