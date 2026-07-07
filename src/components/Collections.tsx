@@ -5,6 +5,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import Logo from './Logo';
 import { 
   Sofa, 
   Bed, 
@@ -17,7 +18,11 @@ import {
   Check, 
   ShieldCheck, 
   Compass,
-  Sparkles
+  Sparkles,
+  MapPin,
+  Mail,
+  ArrowLeft,
+  ChevronUp
 } from 'lucide-react';
 
 interface CollectionsProps {
@@ -244,7 +249,7 @@ const PRODUCTS_DATABASE: Record<string, ProductDetailData> = {
     size: "9 Pieces (8 Chairs + 1 Table)",
     images: [
       "https://furnitureholz.com/wp-content/uploads/2021/04/Sissoo-Wood-Glass-Top-Fancy-Dining-Table-600x420.jpg",
-      "https://furnitureholz.com/wp-content/uploads/2021/04/Acacia-Dining-Room-Furniture-600x420.jpg"
+      "https://furnitureholz.com/wp-content/uploads/2021/04/Sissoo-Wood-Glass-Top-Fancy-Dining-Table-600x420.jpg#flipped"
     ],
     status: "Available",
     categories: "Chair & Tables, Dining Room, Luxury Sets"
@@ -261,7 +266,7 @@ const PRODUCTS_DATABASE: Record<string, ProductDetailData> = {
     size: "3 Pieces (2 Chairs + 1 Table)",
     images: [
       "https://furnitureholz.com/wp-content/uploads/2021/04/High-Back-Shisham-Wood-Bedroom-Chair-600x420.jpg",
-      "https://furnitureholz.com/wp-content/uploads/2021/04/Bergere-Chair-Set-In-Pakistan-600x420.jpg"
+      "https://furnitureholz.com/wp-content/uploads/2021/04/High-Back-Shisham-Wood-Bedroom-Chair-600x420.jpg#flipped"
     ],
     status: "Sold Out",
     categories: "Chair & Tables, Sofa, Chair & Deewan"
@@ -278,7 +283,7 @@ const PRODUCTS_DATABASE: Record<string, ProductDetailData> = {
     size: "1 Piece",
     images: [
       "https://i.pinimg.com/1200x/3d/ee/3a/3dee3a37b91acc6c757dfb70e6e35f4d.jpg",
-      "https://furnitureholz.com/wp-content/uploads/2021/04/Console-Shisham-Carved-Wood-600x420.jpg"
+      "https://i.pinimg.com/1200x/3d/ee/3a/3dee3a37b91acc6c757dfb70e6e35f4d.jpg#flipped"
     ],
     status: "Available",
     categories: "Console & Mirrors, Lobby Luxury, Solid Wood"
@@ -295,7 +300,7 @@ const PRODUCTS_DATABASE: Record<string, ProductDetailData> = {
     size: "9 Pieces (8 Chairs + 1 Table)",
     images: [
       "https://furnitureholz.com/wp-content/uploads/2021/04/Acacia-Dining-Room-Furniture-600x420.jpg",
-      "https://furnitureholz.com/wp-content/uploads/2021/04/Sissoo-Wood-Glass-Top-Fancy-Dining-Table-600x420.jpg"
+      "https://furnitureholz.com/wp-content/uploads/2021/04/Acacia-Dining-Room-Furniture-600x420.jpg#flipped"
     ],
     status: "Available",
     categories: "Chair & Tables, Dining Room, Special Edition"
@@ -312,7 +317,7 @@ const PRODUCTS_DATABASE: Record<string, ProductDetailData> = {
     size: "1 Piece",
     images: [
       "https://furnitureholz.com/wp-content/uploads/2021/04/Sissoo-Wood-Bedroom-Ship-Chair-600x420.jpg",
-      "https://furnitureholz.com/wp-content/uploads/2021/04/Chase-Lounge-Bedroom-Sofa-Chair-600x420.jpg"
+      "https://furnitureholz.com/wp-content/uploads/2021/04/Sissoo-Wood-Bedroom-Ship-Chair-600x420.jpg#flipped"
     ],
     status: "Available",
     categories: "Chair & Tables, Sofa & Deewan, Sofa, Chair & Deewan"
@@ -329,7 +334,7 @@ const PRODUCTS_DATABASE: Record<string, ProductDetailData> = {
     size: "3 Pieces (2 Chairs + 1 Table)",
     images: [
       "https://furnitureholz.com/wp-content/uploads/2021/04/Bergere-Chair-Set-In-Pakistan-600x420.jpg",
-      "https://furnitureholz.com/wp-content/uploads/2021/04/High-Back-Shisham-Wood-Bedroom-Chair-600x420.jpg"
+      "https://furnitureholz.com/wp-content/uploads/2021/04/Bergere-Chair-Set-In-Pakistan-600x420.jpg#flipped"
     ],
     status: "Available",
     categories: "Chair & Tables, Sofa, Chair & Deewan"
@@ -346,7 +351,7 @@ const PRODUCTS_DATABASE: Record<string, ProductDetailData> = {
     size: "1 Piece",
     images: [
       "https://i.pinimg.com/736x/fc/92/b8/fc92b87d8ba2c7aa252d8e162c624e7e.jpg",
-      "https://furnitureholz.com/wp-content/uploads/2021/04/High-Back-Shisham-Wood-Bedroom-Chair-600x420.jpg"
+      "https://i.pinimg.com/736x/fc/92/b8/fc92b87d8ba2c7aa252d8e162c624e7e.jpg#flipped"
     ],
     status: "Available",
     categories: "Chair & Tables, Sofa, Chair & Deewan"
@@ -363,7 +368,7 @@ const PRODUCTS_DATABASE: Record<string, ProductDetailData> = {
     size: "7 Pieces (6 Chairs + 1 Table)",
     images: [
       "https://furnitureholz.com/wp-content/uploads/2021/04/Triangular-6-Chairs-Dining-Table-Set-600x420.jpg",
-      "https://furnitureholz.com/wp-content/uploads/2021/04/Acacia-Dining-Room-Furniture-600x420.jpg"
+      "https://furnitureholz.com/wp-content/uploads/2021/04/Triangular-6-Chairs-Dining-Table-Set-600x420.jpg#flipped"
     ],
     status: "Sold Out",
     categories: "Chair & Tables, Dining Room, Special Shapes"
@@ -380,7 +385,7 @@ const PRODUCTS_DATABASE: Record<string, ProductDetailData> = {
     size: "7 Seater (3+2+1+Corner)",
     images: [
       "https://furnitureholz.com/wp-content/uploads/2021/04/8-Seater-Sofa-Set-600x420.jpg",
-      "https://furnitureholz.com/wp-content/uploads/2021/04/Chase-Lounge-Bedroom-Sofa-Chair-600x420.jpg"
+      "https://furnitureholz.com/wp-content/uploads/2021/04/8-Seater-Sofa-Set-600x420.jpg#flipped"
     ],
     status: "Available",
     categories: "Sofa & Deewan, Sofa, Chair & Deewan"
@@ -397,7 +402,7 @@ const PRODUCTS_DATABASE: Record<string, ProductDetailData> = {
     size: "1 Jhula Unit (Includes Brass Chains)",
     images: [
       "https://furnitureholz.com/wp-content/uploads/2021/04/Chinioti-Shisham-Wood-Jhola-600x420.jpg",
-      "https://i.pinimg.com/1200x/8c/1d/64/8c1d6412275f03784cca7824e7f0c317.jpg"
+      "https://furnitureholz.com/wp-content/uploads/2021/04/Chinioti-Shisham-Wood-Jhola-600x420.jpg#flipped"
     ],
     status: "Available",
     categories: "Swings & Jhulas, Traditional Lobby, Solid Wood"
@@ -414,7 +419,7 @@ const PRODUCTS_DATABASE: Record<string, ProductDetailData> = {
     size: "3-Piece Nest Set (Small, Medium, Large)",
     images: [
       "https://furnitureholz.com/wp-content/uploads/2021/04/Versace-Shisham-Wood-3-Table-Net-Set-600x420.jpg",
-      "https://furnitureholz.com/wp-content/uploads/2021/04/Acacia-Dining-Room-Furniture-600x420.jpg"
+      "https://furnitureholz.com/wp-content/uploads/2021/04/Versace-Shisham-Wood-3-Table-Net-Set-600x420.jpg#flipped"
     ],
     status: "Available",
     categories: "Tables & Nest, Living Room Accents"
@@ -431,7 +436,7 @@ const PRODUCTS_DATABASE: Record<string, ProductDetailData> = {
     size: "3 Pieces (2 Moora Chairs + 1 Central Table)",
     images: [
       "https://furnitureholz.com/wp-content/uploads/2021/04/Chinioti-Moora-Chair-600x420.jpg",
-      "https://furnitureholz.com/wp-content/uploads/2021/04/Bergere-Chair-Set-In-Pakistan-600x420.jpg"
+      "https://furnitureholz.com/wp-content/uploads/2021/04/Chinioti-Moora-Chair-600x420.jpg#flipped"
     ],
     status: "Available",
     categories: "Chair & Tables, Sofa, Chair & Deewan"
@@ -448,7 +453,7 @@ const PRODUCTS_DATABASE: Record<string, ProductDetailData> = {
     size: "2 Pieces (1 Console Table + 1 Mirror Frame)",
     images: [
       "https://furnitureholz.com/wp-content/uploads/2021/04/Console-Shisham-Carved-Wood-600x420.jpg",
-      "https://i.pinimg.com/1200x/3d/ee/3a/3dee3a37b91acc6c757dfb70e6e35f4d.jpg"
+      "https://furnitureholz.com/wp-content/uploads/2021/04/Console-Shisham-Carved-Wood-600x420.jpg#flipped"
     ],
     status: "Available",
     categories: "Console & Mirrors, Lobby Entryway"
@@ -465,7 +470,7 @@ const PRODUCTS_DATABASE: Record<string, ProductDetailData> = {
     size: "1 Rocking Chair Unit",
     images: [
       "https://furnitureholz.com/wp-content/uploads/2021/04/Chase-Lounge-Bedroom-Sofa-Chair-600x420.jpg",
-      "https://furnitureholz.com/wp-content/uploads/2021/04/Sissoo-Wood-Bedroom-Ship-Chair-600x420.jpg"
+      "https://furnitureholz.com/wp-content/uploads/2021/04/Chase-Lounge-Bedroom-Sofa-Chair-600x420.jpg#flipped"
     ],
     status: "Available",
     categories: "Chair & Tables, Sofa, Chair & Deewan"
@@ -482,7 +487,7 @@ const PRODUCTS_DATABASE: Record<string, ProductDetailData> = {
     size: "4-Panel Folding Screen",
     images: [
       "https://i.pinimg.com/1200x/8c/1d/64/8c1d6412275f03784cca7824e7f0c317.jpg",
-      "https://furnitureholz.com/wp-content/uploads/2021/04/Console-Shisham-Carved-Wood-600x420.jpg"
+      "https://i.pinimg.com/1200x/8c/1d/64/8c1d6412275f03784cca7824e7f0c317.jpg#flipped"
     ],
     status: "Available",
     categories: "Partition Screens, Room Dividers"
@@ -499,7 +504,7 @@ const PRODUCTS_DATABASE: Record<string, ProductDetailData> = {
     size: "2 Pieces (Dressing Table + Mirror Frame)",
     images: [
       "https://i.pinimg.com/1200x/b3/2c/13/b32c136f377ff5adbb10b7fb3c5d1f38.jpg",
-      "https://i.pinimg.com/1200x/3d/ee/3a/3dee3a37b91acc6c757dfb70e6e35f4d.jpg"
+      "https://i.pinimg.com/1200x/b3/2c/13/b32c136f377ff5adbb10b7fb3c5d1f38.jpg#flipped"
     ],
     status: "Available",
     categories: "Dressing Tables, Vanity Suite, Bedroom Luxury"
@@ -509,12 +514,19 @@ const PRODUCTS_DATABASE: Record<string, ProductDetailData> = {
 export default function Collections({ onSelectCollection }: CollectionsProps) {
   const [currentPage, setCurrentPage] = useState(0); // 0 or 1
   const [slideDirection, setSlideDirection] = useState(1); // 1 or -1
+
   const [activeInquiryItem, setActiveInquiryItem] = useState<string | null>(null);
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
   
   const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
   const [activeDetailImage, setActiveDetailImage] = useState<string>('');
+
+  // Form state
+  const [clientName, setClientName] = useState('');
+  const [clientPhone, setClientPhone] = useState('');
+  const [woodSelection, setWoodSelection] = useState('Pure Sheesham Wood (Tali)');
+  const [specifications, setSpecifications] = useState('');
 
   const handleOpenProductDetail = (productId: string) => {
     setSelectedProduct(productId);
@@ -523,12 +535,6 @@ export default function Collections({ onSelectCollection }: CollectionsProps) {
       setActiveDetailImage(product.images[0]);
     }
   };
-
-  // Form state
-  const [clientName, setClientName] = useState('');
-  const [clientPhone, setClientPhone] = useState('');
-  const [woodSelection, setWoodSelection] = useState('Pure Sheesham Wood (Tali)');
-  const [specifications, setSpecifications] = useState('');
 
   const handleNextPage = () => {
     setSlideDirection(1);
@@ -774,138 +780,455 @@ export default function Collections({ onSelectCollection }: CollectionsProps) {
 
       </div>
 
-      {/* ================= INQUIRY MODAL ================= */}
+      {/* ================= INQUIRY COMPLETE PAGE (FAISALABAD SHOWROOMS) ================= */}
       <AnimatePresence>
         {activeInquiryItem && (
-          <div className="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4">
-            {/* Backdrop */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={handleCloseInquiry}
-              className="fixed inset-0 bg-stone-950/80 backdrop-blur-xs"
-            />
-
-            {/* Modal Wrapper */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-lg rounded-3xl bg-[#151309] text-ivory shadow-2xl border border-oak/35 p-6 md:p-8 z-10 font-sans"
-            >
-              {/* Close Button */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 30 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            id="inquiry-full-page"
+            className="fixed inset-0 z-[100] bg-white text-stone-900 overflow-y-auto w-full h-full font-sans flex flex-col justify-between"
+          >
+            {/* Elegant Header Navigation Bar */}
+            <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-stone-200 py-4 px-6 md:px-12 flex justify-between items-center">
               <button 
-                onClick={handleCloseInquiry} 
-                className="absolute top-4 right-4 p-2 text-ivory-dim/50 hover:text-oak transition-colors"
-                aria-label="Close modal"
+                onClick={handleCloseInquiry}
+                className="group flex items-center gap-2.5 text-stone-600 hover:text-amber-800 text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
               >
-                <X className="w-5 h-5" />
+                <ArrowLeft className="w-4 h-4 transform group-hover:-translate-x-1 transition-transform text-amber-700" />
+                <span>Back to Woodwork Portfolio</span>
               </button>
-
-              {/* Modal Heading */}
-              <div className="space-y-2 mb-6 text-left">
-                <span className="text-[10px] font-mono font-bold tracking-widest text-oak uppercase">
-                  Customization Inquiry
+              
+              <div className="hidden md:block text-center">
+                <span className="text-[10px] font-bold text-amber-700 tracking-[0.2em] uppercase font-mono block">
+                  HOLZCRAFT PREMIUM OUTLET
                 </span>
-                <h2 className="text-xl md:text-2xl font-display font-semibold text-ivory">
-                  Inquire & Request Bespoke Quote
-                </h2>
-                <p className="text-xs text-ivory-dim/70 leading-relaxed">
-                  Aap k selected variant, dimensions aur polish instructions ke mutabiq hamari team real-world quotation aur delivery timeline provide karegi.
+              </div>
+
+              <button 
+                onClick={handleCloseInquiry}
+                className="flex items-center gap-1.5 text-stone-400 hover:text-stone-900 border border-stone-200 hover:border-stone-400 px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all cursor-pointer"
+                aria-label="Close page"
+              >
+                <span>Close</span>
+                <X className="w-3.5 h-3.5" />
+              </button>
+            </header>
+
+            {/* Main Content Area */}
+            <div className="flex-grow py-12 px-6 md:px-12 max-w-7xl mx-auto w-full space-y-12">
+              {/* Page Centered Heading */}
+              <div className="text-center max-w-3xl mx-auto space-y-3">
+                <span className="text-[11px] font-mono font-bold tracking-[0.25em] text-amber-750 uppercase block">
+                  OUR PHYSICAL TOUCHPOINTS
+                </span>
+                <h1 className="text-3xl md:text-5xl font-display font-semibold text-stone-900 uppercase tracking-tight font-serif">
+                  Faisalabad Showrooms
+                </h1>
+                <div className="w-16 h-0.5 bg-amber-700 mx-auto rounded-full" />
+                <p className="text-xs md:text-sm text-stone-500 font-sans max-w-xl mx-auto leading-relaxed">
+                  Experience the physical density and weight of seasoned solid Sheesham wood before you finalize your bespoke pricing order.
                 </p>
               </div>
 
-              {/* Inquiry Form */}
-              <form onSubmit={handleFormSubmit} className="space-y-4 text-left">
-                <div>
-                  <label className="block text-[10px] font-bold uppercase tracking-wider text-ivory-dim/70 mb-1.5">
-                    Selected Item Variant
-                  </label>
-                  <input 
-                    type="text" 
-                    value={activeInquiryItem} 
-                    readOnly 
-                    className="w-full px-4 py-2.5 bg-charcoal border border-line rounded-lg text-xs font-semibold text-oak focus:outline-none"
-                  />
-                </div>
+              {/* Two Column Grid */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
                 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-[10px] font-bold uppercase tracking-wider text-ivory-dim/70 mb-1.5">
-                      Your Name *
-                    </label>
-                    <input 
-                      type="text" 
-                      required 
-                      value={clientName}
-                      onChange={(e) => setClientName(e.target.value)}
-                      placeholder="Ali Ahmed" 
-                      className="w-full px-4 py-2.5 bg-charcoal border border-line rounded-lg text-xs text-ivory focus:outline-none focus:border-oak transition-colors"
-                    />
+                {/* Left Part: Showrooms Section (8 Cols) */}
+                <div className="lg:col-span-8 space-y-8">
+                  {/* Showrooms Cards List */}
+                  <div className="space-y-8">
+                    {/* Showroom 1: Main Branch */}
+                    <div className="bg-white rounded-3xl border border-stone-200 overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+                      <div className="p-5 bg-stone-50 border-b border-stone-200 flex justify-between items-center">
+                        <span className="font-mono text-xs font-bold text-stone-800 uppercase tracking-wider">
+                          1. Main Branch Showroom
+                        </span>
+                        <span className="text-[9px] bg-amber-100 text-amber-800 border border-amber-200/50 px-2.5 py-1 rounded uppercase font-bold font-mono">
+                          AL-Madina Tower
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-2">
+                        {/* Storefront Image */}
+                        <div className="aspect-[16/10] md:aspect-auto overflow-hidden bg-stone-100 relative border-r border-stone-200">
+                          <img 
+                            src="https://furnitureholz.com/wp-content/uploads/2024/07/furniture-holz.jpeg"
+                            alt="Furniture Holz Main Branch"
+                            className="w-full h-full object-cover hover:scale-105 transition-all duration-500"
+                            referrerPolicy="no-referrer"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
+                          <div className="absolute bottom-4 left-5">
+                            <span className="text-[10px] text-white font-semibold uppercase tracking-widest font-mono">
+                              Sheikhupura Rd Exterior
+                            </span>
+                          </div>
+                        </div>
+                        {/* Active Google Map */}
+                        <div className="h-[220px] md:h-[280px] bg-stone-100 relative">
+                          <iframe 
+                            src="https://maps.google.com/maps?q=Furniture%20Holz%20Al-madina%20tower%20Sheikhupura%20Rd%20Faisalabad&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                            width="100%" 
+                            height="100%" 
+                            style={{ border: 0 }} 
+                            allowFullScreen={true} 
+                            loading="lazy"
+                            title="Furniture Holz Main Branch Google Map"
+                            className="w-full h-full"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Showroom 2: Executive Branch */}
+                    <div className="bg-white rounded-3xl border border-stone-200 overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+                      <div className="p-5 bg-stone-50 border-b border-stone-200 flex justify-between items-center">
+                        <span className="font-mono text-xs font-bold text-stone-800 uppercase tracking-wider">
+                          2. Executive Branch Showroom
+                        </span>
+                        <span className="text-[9px] bg-stone-200 text-stone-800 border border-stone-300 px-2.5 py-1 rounded uppercase font-bold font-mono">
+                          D-Ground
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-2">
+                        {/* Storefront Image */}
+                        <div className="aspect-[16/10] md:aspect-auto overflow-hidden bg-stone-100 relative border-r border-stone-200">
+                          <img 
+                            src="https://furnitureholz.com/wp-content/uploads/2024/07/furniture-holz-d-2.jpg"
+                            alt="Furniture Holz Executive Branch"
+                            className="w-full h-full object-cover hover:scale-105 transition-all duration-500"
+                            referrerPolicy="no-referrer"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
+                          <div className="absolute bottom-4 left-5">
+                            <span className="text-[10px] text-white font-semibold uppercase tracking-widest font-mono">
+                              D-Ground Storefront
+                            </span>
+                          </div>
+                        </div>
+                        {/* Active Google Map */}
+                        <div className="h-[220px] md:h-[280px] bg-stone-100 relative">
+                          <iframe 
+                            src="https://maps.google.com/maps?q=Furniture%20Holz%20Basement%20SB%20Store%20Harianwala%20Chowk%20D-Ground%20Faisalabad&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                            width="100%" 
+                            height="100%" 
+                            style={{ border: 0 }} 
+                            allowFullScreen={true} 
+                            loading="lazy"
+                            title="Furniture Holz Executive Branch Google Map"
+                            className="w-full h-full"
+                          />
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <label className="block text-[10px] font-bold uppercase tracking-wider text-ivory-dim/70 mb-1.5">
-                      WhatsApp / Phone *
-                    </label>
-                    <input 
-                      type="tel" 
-                      required 
-                      value={clientPhone}
-                      onChange={(e) => setClientPhone(e.target.value)}
-                      placeholder="03xx xxxxxxx" 
-                      className="w-full px-4 py-2.5 bg-charcoal border border-line rounded-lg text-xs text-ivory focus:outline-none focus:border-oak transition-colors"
-                    />
+                </div>
+
+                {/* Right Part: Inquiry Callback Request Form (4 Cols) */}
+                <div className="lg:col-span-4 bg-stone-50 border border-stone-200 rounded-3xl p-6 md:p-8 space-y-6 shadow-md sticky top-24">
+                  <div className="text-left space-y-1.5 pb-4 border-b border-stone-200">
+                    <span className="text-[10px] font-mono font-bold tracking-widest text-amber-800 uppercase block">
+                      Bespoke Pricing
+                    </span>
+                    <h3 className="text-xl font-display font-semibold text-stone-950 font-serif">
+                      Bespoke Quotation
+                    </h3>
+                    <p className="text-[11px] text-stone-500 leading-relaxed font-sans">
+                      Aap k selected masterpiece ke specifications aur custom design changes k mutabiq direct premium pricing quotation share ki jaey gi.
+                    </p>
+                  </div>
+
+                  <form onSubmit={handleFormSubmit} className="space-y-4 text-left font-sans">
+                    <div>
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-stone-600 mb-1">
+                        Inquiring Item
+                      </label>
+                      <input 
+                        type="text" 
+                        value={activeInquiryItem} 
+                        readOnly 
+                        className="w-full px-4 py-2.5 bg-stone-100 border border-stone-300 rounded-xl text-xs font-bold text-amber-800 focus:outline-none"
+                      />
+                    </div>
+                    
+                    <div>
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-stone-600 mb-1">
+                        Your Name *
+                      </label>
+                      <input 
+                        type="text" 
+                        required 
+                        value={clientName}
+                        onChange={(e) => setClientName(e.target.value)}
+                        placeholder="Ali Ahmed" 
+                        className="w-full px-4 py-2.5 bg-white border border-stone-300 focus:border-amber-700 focus:ring-1 focus:ring-amber-700 rounded-xl text-xs text-stone-850 focus:outline-none transition-colors"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-stone-600 mb-1">
+                        WhatsApp Number *
+                      </label>
+                      <input 
+                        type="tel" 
+                        required 
+                        value={clientPhone}
+                        onChange={(e) => setClientPhone(e.target.value)}
+                        placeholder="e.g., 0322 6638762" 
+                        className="w-full px-4 py-2.5 bg-white border border-stone-300 focus:border-amber-700 focus:ring-1 focus:ring-amber-700 rounded-xl text-xs text-stone-850 focus:outline-none transition-colors"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-stone-600 mb-1">
+                        Timber Choice
+                      </label>
+                      <select 
+                        value={woodSelection}
+                        onChange={(e) => setWoodSelection(e.target.value)}
+                        className="w-full px-4 py-2.5 bg-white border border-stone-300 focus:border-amber-700 focus:ring-1 focus:ring-amber-700 rounded-xl text-xs text-stone-850 focus:outline-none transition-colors cursor-pointer"
+                      >
+                        <option>Pure Sheesham Wood (Tali)</option>
+                        <option>Premium Golden Teak (Sagan)</option>
+                        <option>Luxury Walnut / Ash Wood combo</option>
+                        <option>Solid Pine / Deodar Wood</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-stone-600 mb-1">
+                        Specifications (Size, Fabric, Color)
+                      </label>
+                      <textarea 
+                        value={specifications}
+                        onChange={(e) => setSpecifications(e.target.value)}
+                        placeholder="E.g., Size 6ft x 6.5ft, royal red velvet seating, walnut dark polish gloss..." 
+                        rows={3} 
+                        className="w-full px-4 py-2.5 bg-white border border-stone-300 focus:border-amber-700 focus:ring-1 focus:ring-amber-700 rounded-xl text-xs text-stone-850 focus:outline-none transition-colors resize-none"
+                      />
+                    </div>
+
+                    <div className="space-y-3 pt-2">
+                      <button 
+                        type="submit" 
+                        className="w-full py-3 bg-amber-800 hover:bg-stone-900 text-white font-bold rounded-xl text-xs font-semibold uppercase tracking-wider transition-colors shadow-md cursor-pointer"
+                      >
+                        Send Callback Request
+                      </button>
+
+                      {/* Direct WhatsApp Action Button */}
+                      <a 
+                        href={`https://wa.me/923226638762?text=Assalam-o-Alaikum,%20I%20am%20inquiring%20about%20the%20price%20of%20"${encodeURIComponent(activeInquiryItem || '')}"`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full flex items-center justify-center gap-2 py-3 bg-emerald-50 hover:bg-emerald-600 text-emerald-600 hover:text-white border border-emerald-200 hover:border-emerald-600 rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-sm cursor-pointer"
+                      >
+                        <Phone className="w-3.5 h-3.5" />
+                        Chat on WhatsApp
+                      </a>
+                    </div>
+                  </form>
+                </div>
+
+              </div>
+            </div>
+
+            {/* ================= UNIFIED SHOWROOMS FOOTER (Styled exactly as in the user's first image with animations) ================= */}
+            <footer className="w-full bg-[#1c1c1c] text-stone-300 border-t border-stone-800 pt-16 pb-10 px-6 md:px-12 font-sans">
+              <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 text-left items-start pb-12 border-b border-stone-800/80">
+                
+                {/* Column 1: Logo & Social Media Icons */}
+                <div className="md:col-span-4 space-y-6">
+                  <div className="group inline-block">
+                    <Logo className="w-28 h-auto transition-all duration-300 group-hover:scale-105" />
+                  </div>
+                  
+                  {/* Social Media Links from Image 1 */}
+                  <div className="flex items-center gap-5 pt-2 text-stone-400">
+                    <a 
+                      href="https://facebook.com/furnitureholz" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="hover:text-amber-500 hover:scale-125 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center" 
+                      title="Facebook"
+                    >
+                      <svg className="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24">
+                        <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.8c4.56-.93 8-4.96 8-9.8z"/>
+                      </svg>
+                    </a>
+                    <a 
+                      href="https://tiktok.com/@furnitureholz" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="hover:text-amber-500 hover:scale-125 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center" 
+                      title="TikTok"
+                    >
+                      <svg className="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24">
+                        <path d="M12.525.02c1.31 0 2.583.397 3.655 1.13-.564.602-1.024 1.336-1.373 2.141-.75-.688-1.428-1.365-2.282-1.552-.459-.42-.713-.984-.713-1.603 0-.038.006-.076.013-.116zM18.68 5.88c-1.29.02-2.52-.45-3.48-1.31.07.7.07 1.41-.01 2.11.7.59 1.58.94 2.5.96V5.88zm-7.18 8.12V0H8.24c0 .85-.35 1.66-.96 2.27-.61.61-1.42.98-2.27 1.01v3.26c1.24-.03 2.4-.62 3.24-1.61v9.07c0 1.52-1.23 2.75-2.75 2.75S3 15.52 3 14s1.23-2.75 2.75-2.75c.32 0 .63.06.92.17V8.12A7.52 7.52 0 0 0 5.75 8C2.57 8 .1 10.47.1 13.65s2.47 5.65 5.65 5.65 5.65-2.47 5.65-5.65c0-.02 0-.04-.01-.06z"/>
+                      </svg>
+                    </a>
+                    <a 
+                      href="https://youtube.com/c/furnitureholz" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="hover:text-amber-500 hover:scale-125 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center" 
+                      title="YouTube"
+                    >
+                      <svg className="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24">
+                        <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                      </svg>
+                    </a>
+                    <a 
+                      href="https://instagram.com/furnitureholz" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="hover:text-amber-500 hover:scale-125 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center" 
+                      title="Instagram"
+                    >
+                      <svg className="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+                      </svg>
+                    </a>
+                    <a 
+                      href="https://pinterest.com/furnitureholz" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="hover:text-amber-500 hover:scale-125 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center" 
+                      title="Pinterest"
+                    >
+                      <svg className="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24">
+                        <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.966 1.406-5.966s-.359-.715-.359-1.777c0-1.663.967-2.905 2.167-2.905 1.024 0 1.517.769 1.517 1.689 0 1.029-.654 2.57-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.76-2.245 3.76-5.487 0-2.869-2.062-4.878-5.008-4.878-3.411 0-5.413 2.561-5.413 5.2 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12.017 24c6.62 0 11.983-5.367 11.983-11.987C24 5.367 18.637 0 12.017 0z"/>
+                      </svg>
+                    </a>
+                    <a 
+                      href="https://linkedin.com/company/furnitureholz" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="hover:text-amber-500 hover:scale-125 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center" 
+                      title="LinkedIn"
+                    >
+                      <svg className="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                      </svg>
+                    </a>
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-[10px] font-bold uppercase tracking-wider text-ivory-dim/70 mb-1.5">
-                    Primary Wood Selection
-                  </label>
-                  <select 
-                    value={woodSelection}
-                    onChange={(e) => setWoodSelection(e.target.value)}
-                    className="w-full px-4 py-2.5 bg-charcoal border border-line rounded-lg text-xs text-ivory focus:outline-none focus:border-oak transition-colors cursor-pointer"
-                  >
-                    <option>Pure Sheesham Wood (Tali)</option>
-                    <option>Premium Golden Teak (Sagan)</option>
-                    <option>Luxury Walnut / Ash Wood combo</option>
-                    <option>Solid Pine / Deodar Wood</option>
-                  </select>
+                {/* Column 2: Links */}
+                <div className="md:col-span-3 space-y-4">
+                  <span className="text-white font-bold text-xs tracking-[0.2em] font-mono uppercase block border-b border-stone-800 pb-2.5">
+                    Links
+                  </span>
+                  <div className="space-y-2.5">
+                    <button 
+                      onClick={() => {
+                        const el = document.getElementById('inquiry-full-page');
+                        if (el) {
+                          el.scrollTo({ top: 300, behavior: 'smooth' });
+                        }
+                      }}
+                      className="hover:text-amber-500 hover:translate-x-1.5 transition-all duration-300 block text-stone-400 text-sm py-0.5 text-left font-sans cursor-pointer w-full"
+                    >
+                      Contact Us
+                    </button>
+                    <a 
+                      href="https://furnitureholz.com/privacy-policy" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="hover:text-amber-500 hover:translate-x-1.5 transition-all duration-300 block text-stone-400 text-sm py-0.5 font-sans"
+                    >
+                      Privacy Policy
+                    </a>
+                  </div>
                 </div>
 
-                <div>
-                  <label className="block text-[10px] font-bold uppercase tracking-wider text-ivory-dim/70 mb-1.5">
-                    Custom Polish & Dimensional Specifications
-                  </label>
-                  <textarea 
-                    value={specifications}
-                    onChange={(e) => setSpecifications(e.target.value)}
-                    placeholder="Write dimensional requirements (e.g., 6ft x 6.5ft), fabric choice, or polish gloss requirements..." 
-                    rows={3} 
-                    className="w-full px-4 py-2.5 bg-charcoal border border-line rounded-lg text-xs text-ivory focus:outline-none focus:border-oak resize-none transition-colors"
-                  />
+                {/* Column 3: Address (With exact text & info@furnitureholz.com opening website in new tab) */}
+                <div className="md:col-span-5 space-y-4">
+                  <span className="text-white font-bold text-xs tracking-[0.2em] font-mono uppercase block border-b border-stone-800 pb-2.5">
+                    Address
+                  </span>
+                  <div className="space-y-3.5 text-sm text-stone-400">
+                    <div className="flex items-start gap-3 group/item">
+                      <span className="p-1.5 rounded-lg bg-stone-800/60 text-amber-500 group-hover/item:bg-amber-800 group-hover/item:text-white transition-colors duration-300 mt-0.5 flex-shrink-0">
+                        <MapPin className="w-4 h-4" />
+                      </span>
+                      <span className="leading-relaxed">
+                        AL-Madina Tower, Sheikhupura Road, Near Misaq-ul-Mall, Faisalabad
+                      </span>
+                    </div>
+
+                    {/* Email Link opening furnitureholz.com in a new tab as requested */}
+                    <div className="flex items-start gap-3 group/item">
+                      <span className="p-1.5 rounded-lg bg-stone-800/60 text-amber-500 group-hover/item:bg-amber-800 group-hover/item:text-white transition-colors duration-300 mt-0.5 flex-shrink-0">
+                        <Mail className="w-4 h-4" />
+                      </span>
+                      <a 
+                        href="https://furnitureholz.com" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="hover:text-amber-500 font-bold transition-all duration-300 relative py-0.5 block group/link"
+                        title="Open official website in new tab"
+                      >
+                        info@furnitureholz.com
+                        <span className="absolute left-0 bottom-0 w-full h-[1px] bg-amber-500 origin-left scale-x-0 group-hover/link:scale-x-100 transition-transform duration-300" />
+                      </a>
+                    </div>
+
+                    <div className="flex items-start gap-3 group/item">
+                      <span className="p-1.5 rounded-lg bg-stone-800/60 text-amber-500 group-hover/item:bg-amber-800 group-hover/item:text-white transition-colors duration-300 mt-0.5 flex-shrink-0">
+                        <Phone className="w-4 h-4" />
+                      </span>
+                      <a 
+                        href="tel:03041111857"
+                        className="hover:text-amber-500 font-mono transition-all duration-300 py-0.5 block"
+                      >
+                        UAN 0304 1111857
+                      </a>
+                    </div>
+
+                    {/* Whatsapp with wa.me link */}
+                    <div className="flex items-start gap-3 group/item">
+                      <span className="p-1.5 rounded-lg bg-stone-800/60 text-emerald-500 group-hover/item:bg-emerald-600 group-hover/item:text-white transition-colors duration-300 mt-0.5 flex-shrink-0">
+                        <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.725 1.45 5.489 0 9.954-4.466 9.957-9.96.002-2.661-1.026-5.163-2.897-7.037C16.562 1.733 14.067.702 11.4.701c-5.493 0-9.96 4.467-9.963 9.962-.001 2.015.525 3.987 1.524 5.734L1.932 20.33l4.715-1.176zM18.14 14.8c-.34-.17-2.01-.99-2.321-1.1-.31-.11-.537-.17-.76.17-.223.34-.863 1.1-.1 1.3.18.2.36.23.68.06.32-.17 1.34-.49 2.56-1.58.95-.85 1.6-1.9 1.78-2.24.18-.34.02-.52-.15-.69-.15-.15-.34-.39-.5-.59-.16-.2-.22-.34-.33-.57-.11-.23-.06-.43.03-.6.09-.17.76-1.84 1.05-2.54.28-.68.56-.59.76-.6.2-.01.43-.01.66-.01.23 0 .61.09.93.43.32.34 1.22 1.19 1.22 2.91s-1.25 3.38-1.42 3.61c-.17.23-2.45 3.74-5.93 5.24-1.14.49-2.03.78-2.73.99-.85.27-1.63.23-2.24.14-.68-.1-2.01-.82-2.29-1.57-.28-.75-.28-1.39-.2-1.52.08-.13.3-.23.64-.4z"/>
+                        </svg>
+                      </span>
+                      <a 
+                        href="https://wa.me/923276235300" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="hover:text-amber-500 font-mono transition-all duration-300 py-0.5 block"
+                      >
+                        Whatsapp: 0327 6235300
+                      </a>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="pt-2 flex justify-end space-x-3">
-                  <button 
-                    type="button" 
-                    onClick={handleCloseInquiry} 
-                    className="px-5 py-2.5 bg-charcoal border border-line hover:bg-stone-900 text-ivory-dim rounded-xl text-xs font-semibold uppercase tracking-wider transition-colors"
-                  >
-                    Cancel
-                  </button>
-                  <button 
-                    type="submit" 
-                    className="px-5 py-2.5 bg-oak hover:bg-white text-charcoal font-bold rounded-xl text-xs font-semibold uppercase tracking-wider transition-colors shadow-md"
-                  >
-                    Submit Inquiry
-                  </button>
-                </div>
-              </form>
-            </motion.div>
-          </div>
+              </div>
+
+              {/* Footer Bottom Strip */}
+              <div className="max-w-7xl mx-auto pt-8 flex flex-col sm:flex-row justify-between items-center text-[11px] text-stone-500 font-sans gap-4">
+                <span>© furnitureholz.com – All Rights Reserved. Powered by Infinity Studios</span>
+                
+                {/* Scroll to Top button */}
+                <button 
+                  onClick={() => {
+                    const el = document.getElementById('inquiry-full-page');
+                    if (el) {
+                      el.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                  }}
+                  className="p-2.5 bg-stone-800 border border-stone-700 hover:border-amber-500 text-stone-400 hover:text-amber-500 rounded-full transition-all duration-300 cursor-pointer shadow-md hover:-translate-y-0.5"
+                  title="Scroll to top of inquiry page"
+                >
+                  <ChevronUp className="w-4 h-4" />
+                </button>
+              </div>
+            </footer>
+          </motion.div>
         )}
       </AnimatePresence>
 
@@ -945,14 +1268,30 @@ export default function Collections({ onSelectCollection }: CollectionsProps) {
                   
                   {/* Left Side: Images Section */}
                   <div className="space-y-4">
-                    <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-line/40 bg-stone-950">
-                      <img 
-                        id="product-main-image"
-                        src={activeDetailImage || product.images[0]} 
-                        alt={product.title} 
-                        className="w-full h-full object-cover transition-all duration-300"
-                        referrerPolicy="no-referrer"
-                      />
+                    <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-line/40 bg-stone-950 group">
+                      {(() => {
+                        const currentImg = activeDetailImage || product.images[0];
+                        const isFlipped = currentImg.endsWith('#flipped');
+                        return (
+                          <img 
+                            id="product-main-image"
+                            src={currentImg} 
+                            alt={product.title} 
+                            className={`w-full h-full object-cover transition-all duration-500 ease-out cursor-zoom-in origin-center ${
+                              isFlipped 
+                                ? 'scale-x-[-1] hover:scale-x-[-1.25] hover:scale-y-[1.25]' 
+                                : 'scale-100 hover:scale-125'
+                            }`}
+                            referrerPolicy="no-referrer"
+                          />
+                        );
+                      })()}
+                      
+                      {/* View Indicator Badge on Main Image */}
+                      <div className="absolute bottom-3 left-3 bg-[#151309]/80 backdrop-blur-md px-2.5 py-1 rounded-md text-[9px] font-mono border border-line tracking-wider text-sage uppercase">
+                        🔍 Hover to Zoom
+                      </div>
+
                       {product.status === 'Sold Out' ? (
                         <span className="absolute top-3 right-3 bg-walnut text-[9px] text-white px-2.5 py-1 rounded-md font-bold uppercase tracking-wider border border-oak/30">
                           Sold Out
@@ -966,20 +1305,31 @@ export default function Collections({ onSelectCollection }: CollectionsProps) {
                     
                     {/* Thumbnail Container */}
                     <div className="flex gap-3 flex-wrap" id="thumb-container">
-                      {product.images.map((imgUrl, idx) => (
-                        <img 
-                          key={idx}
-                          src={imgUrl} 
-                          alt={`${product.title} thumbnail ${idx + 1}`} 
-                          onClick={() => setActiveDetailImage(imgUrl)}
-                          className={`w-20 h-16 object-cover cursor-pointer border rounded-lg transition-all ${
-                            (activeDetailImage || product.images[0]) === imgUrl 
-                              ? 'border-oak scale-105 shadow-md bg-oak/10' 
-                              : 'border-line/40 hover:border-oak/60 hover:scale-102'
-                          }`}
-                          referrerPolicy="no-referrer"
-                        />
-                      ))}
+                      {product.images.map((imgUrl, idx) => {
+                        const isActive = (activeDetailImage || product.images[0]) === imgUrl;
+                        const isThumbFlipped = imgUrl.endsWith('#flipped');
+                        return (
+                          <button 
+                            key={idx}
+                            onClick={() => setActiveDetailImage(imgUrl)}
+                            className={`relative w-24 h-16 rounded-lg overflow-hidden border transition-all cursor-pointer ${
+                              isActive 
+                                ? 'border-oak ring-1 ring-oak shadow-md bg-oak/10 scale-105' 
+                                : 'border-line/40 hover:border-oak/60'
+                            }`}
+                          >
+                            <img 
+                              src={imgUrl} 
+                              alt={`${product.title} view ${idx + 1}`} 
+                              className={`w-full h-full object-cover ${isThumbFlipped ? 'scale-x-[-1]' : ''}`}
+                              referrerPolicy="no-referrer"
+                            />
+                            <span className="absolute bottom-1 right-1 text-[8px] bg-stone-950/90 text-ivory/90 px-1 py-0.5 rounded font-mono leading-none border border-line/40">
+                              {idx === 0 ? 'Front View' : 'Left Angle'}
+                            </span>
+                          </button>
+                        );
+                      })}
                     </div>
                   </div>
 

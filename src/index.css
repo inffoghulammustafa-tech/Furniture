@@ -67,6 +67,15 @@
   background: #EFE4CD;
 }
 
+/* Hide scrollbar utility */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE/Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 /* Subtle border outline for premium UI card look */
 .card-border-glow {
   position: relative;

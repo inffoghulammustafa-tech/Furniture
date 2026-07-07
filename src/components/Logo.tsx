@@ -26,7 +26,7 @@ export default function Logo({ className = '', iconSize = 48, showText = true, v
         viewBox="0 0 100 70"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="transition-transform duration-300 group-hover:scale-105"
+        className="transition-all duration-300 group-hover:scale-110 group-hover:filter group-hover:drop-shadow-[0_0_8px_rgba(245,158,11,0.6)]"
       >
         <defs>
           {/* Stunning yellow-orange gold gradient matching 1 img */}
