@@ -67,7 +67,7 @@ export default function Showrooms() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="bg-[#181613] border border-line flex flex-col justify-between group overflow-hidden"
+              className="box-gradient flex flex-col justify-between group overflow-hidden rounded-2xl"
               id={`showroom-${showroom.id}`}
             >
               <div>

@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Star, MessageSquare, Plus, Check, MapPin, SlidersHorizontal, Eye, ShieldCheck, X } from 'lucide-react';
 import { Review } from '../types';
 import { INITIAL_REVIEWS, PAKISTAN_CITIES, INITIAL_PRODUCTS } from '../data';
+import CountUp from './CountUp';
 
 export default function Reviews() {
   const [reviews, setReviews] = useState<Review[]>([]);
@@ -117,7 +118,9 @@ export default function Reviews() {
           {/* Stats column (4 Columns) */}
           <div className="lg:col-span-4 border-r border-line/40 pr-0 lg:pr-8 flex items-center gap-6 justify-between lg:justify-start">
             <div>
-              <span className="font-display text-5xl font-bold text-oak block">{ratingStats.avg}</span>
+              <span className="font-display text-5xl font-bold text-oak block">
+                <CountUp end={ratingStats.avg} decimals={1} />
+              </span>
               <div className="flex gap-1 text-oak my-2">
                 {[1, 2, 3, 4, 5].map((s) => (
                   <Star
@@ -126,7 +129,9 @@ export default function Reviews() {
                   />
                 ))}
               </div>
-              <span className="text-xs text-ivory-dim/70 font-sans">Based on {ratingStats.total} client audits</span>
+              <span className="text-xs text-ivory-dim/70 font-sans">
+                Based on <CountUp end={ratingStats.total} /> client audits
+              </span>
             </div>
             
             <button
@@ -328,7 +333,7 @@ export default function Reviews() {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="bg-[#221F1A] border border-line p-6 flex flex-col justify-between"
+                className="box-gradient p-6 flex flex-col justify-between rounded-xl"
               >
                 <div>
                   {/* Stars list */}

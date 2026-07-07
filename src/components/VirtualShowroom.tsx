@@ -6,6 +6,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Check, Info, ArrowLeft, ArrowRight, Sparkles, Send, Copy, FileText, Smartphone } from 'lucide-react';
+import CountUp from './CountUp';
 
 interface SubItem {
   name: string;
@@ -291,7 +292,7 @@ export default function VirtualShowroom({ onAddMessageToast }: VirtualShowroomPr
                   <div 
                     key={key}
                     onClick={() => handleOpenCategoryDetail(key)}
-                    className="group cursor-pointer bg-[#181613] rounded-3xl border border-stone-800 overflow-hidden hover:shadow-2xl hover:border-amber-700/60 transition-all duration-300 flex flex-col justify-between"
+                    className="group cursor-pointer box-gradient rounded-3xl overflow-hidden transition-all duration-300 flex flex-col justify-between"
                   >
                     <div className="relative h-64 overflow-hidden bg-stone-950">
                       <img 
@@ -334,12 +335,16 @@ export default function VirtualShowroom({ onAddMessageToast }: VirtualShowroomPr
             {/* Solid Wood Trust Badges Segment */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 py-12 border-t border-b border-stone-800/80">
               <div className="text-center p-4 space-y-2">
-                <div className="text-amber-500 font-serif text-3xl font-semibold">100%</div>
+                <div className="text-amber-500 font-serif text-3xl font-semibold">
+                  <CountUp end={100} suffix="%" />
+                </div>
                 <h5 className="text-xs font-bold uppercase tracking-wider text-stone-100">Premium Hardwood</h5>
                 <p className="text-stone-400 text-[11px]">Strictly use seasoned Sheesham & Golden Teak.</p>
               </div>
               <div className="text-center p-4 space-y-2">
-                <div className="text-amber-500 font-serif text-3xl font-semibold">15 Year</div>
+                <div className="text-amber-500 font-serif text-3xl font-semibold">
+                  <CountUp end={15} suffix=" Year" />
+                </div>
                 <h5 className="text-xs font-bold uppercase tracking-wider text-stone-100">Termite Warranty</h5>
                 <p className="text-stone-400 text-[11px]">Advanced pressure chemical kiln treatment.</p>
               </div>
@@ -376,7 +381,7 @@ export default function VirtualShowroom({ onAddMessageToast }: VirtualShowroomPr
             </div>
 
             {/* Dynamic Category Detail Split Layout */}
-            <div className="bg-[#181613] rounded-3xl border border-stone-800 p-6 md:p-10 shadow-2xl">
+            <div className="box-gradient rounded-3xl p-6 md:p-10">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
                 
                 {/* Left Column: Interactive Image Previewer & Visualizer */}
@@ -412,7 +417,7 @@ export default function VirtualShowroom({ onAddMessageToast }: VirtualShowroomPr
                   </div>
 
                   {/* Sandbox Wood and Fabric Customizer */}
-                  <div className="p-6 bg-[#13110e] rounded-2xl border border-stone-800 space-y-5">
+                  <div className="p-6 box-gradient rounded-2xl space-y-5">
                     <div className="flex items-center justify-between border-b border-stone-800/80 pb-3">
                       <div className="flex items-center gap-2">
                         <Sparkles className="w-4 h-4 text-amber-500" />

@@ -94,7 +94,7 @@ export default function Catalog({
         </div>
 
         {/* Filter Toolbar */}
-        <div className="bg-charcoal/90 border border-line p-6 mb-10 flex flex-col gap-6">
+        <div className="box-gradient p-6 mb-10 flex flex-col gap-6 rounded-2xl">
           {/* Category tabs */}
           <div className="flex flex-wrap items-center gap-2 border-b border-line/50 pb-4">
             {['all', 'bedroom', 'dining', 'living-room', 'outdoor', 'sets'].map((cat) => (
@@ -342,7 +342,7 @@ export default function Catalog({
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                className="bg-charcoal border border-line w-full max-w-4xl max-h-[90vh] overflow-y-auto relative shadow-2xl custom-scrollbar z-10"
+                className="box-gradient w-full max-w-4xl max-h-[90vh] overflow-y-auto relative shadow-2xl custom-scrollbar z-10 rounded-2xl"
               >
                 {/* Close Button */}
                 <button
@@ -434,7 +434,7 @@ export default function Catalog({
                         </div>
 
                         {/* Joinery Spotlight */}
-                        <div className="bg-walnut/10 border border-line/80 p-4 text-xs font-sans">
+                        <div className="box-gradient p-4 text-xs font-sans rounded-xl">
                           <span className="font-mono text-[9px] uppercase tracking-wider text-oak block mb-1">
                             Ustad's Joinery Signature
                           </span>

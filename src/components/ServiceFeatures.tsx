@@ -50,7 +50,7 @@ export default function ServiceFeatures() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="feature-card flex items-start space-x-4 p-5 rounded-xl bg-[#1C1A17]/40 border border-line hover:bg-[#1C1A17]/80 hover:border-oak/40 transition-all duration-300 group cursor-pointer"
+            className="feature-card flex items-start space-x-4 p-5 rounded-xl box-gradient transition-all duration-300 group cursor-pointer"
             id="feature-after-sale"
           >
             <div className="flex-shrink-0 mt-1">
@@ -94,7 +94,7 @@ export default function ServiceFeatures() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="feature-card flex items-start space-x-4 p-5 rounded-xl bg-[#1C1A17]/40 border border-line hover:bg-[#1C1A17]/80 hover:border-oak/40 transition-all duration-300 group cursor-pointer"
+            className="feature-card flex items-start space-x-4 p-5 rounded-xl box-gradient transition-all duration-300 group cursor-pointer"
             id="feature-consultancy"
           >
             <div className="flex-shrink-0 mt-1">
@@ -136,7 +136,7 @@ export default function ServiceFeatures() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="feature-card flex items-start space-x-4 p-5 rounded-xl bg-[#1C1A17]/40 border border-line hover:bg-[#1C1A17]/80 hover:border-oak/40 transition-all duration-300 group cursor-pointer"
+            className="feature-card flex items-start space-x-4 p-5 rounded-xl box-gradient transition-all duration-300 group cursor-pointer"
             id="feature-custom-options"
           >
             <div className="flex-shrink-0 mt-1">

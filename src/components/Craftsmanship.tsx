@@ -107,7 +107,7 @@ export default function Craftsmanship() {
             </div>
 
             {/* Dynamic specs box at bottom of left image panel */}
-            <div className="p-6 m-6 bg-charcoal/95 border border-line backdrop-blur-xs z-10 text-xs">
+            <div className="p-6 m-6 box-gradient backdrop-blur-xs z-10 text-xs rounded-xl">
               <span className="font-mono text-[9px] text-sage uppercase tracking-wider block mb-3">TECHNICAL WORKSHOP SPECS</span>
               <div className="space-y-2">
                 {activeStage.specs.map((sp, idx) => (
@@ -158,7 +158,7 @@ export default function Craftsmanship() {
             </div>
 
             {/* Stage description details panel */}
-            <div className="bg-charcoal/40 border border-line p-6 md:p-8 flex-1 flex flex-col justify-between">
+            <div className="box-gradient p-6 md:p-8 flex-1 flex flex-col justify-between rounded-xl">
               <div>
                 <span className="font-mono text-[10px] uppercase text-oak tracking-widest block mb-2">
                   Atelier stage {activeStage.num} · Detail report

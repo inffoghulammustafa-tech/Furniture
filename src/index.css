@@ -2,12 +2,12 @@
 @import "tailwindcss";
 
 @theme {
-  --color-charcoal: #1C1A17;
-  --color-walnut: #4A3428;
-  --color-oak: #C89F6E;
+  --color-charcoal: #151309;
+  --color-walnut: #855B0A;
+  --color-oak: #E2B248;
   --color-sage: #6B7654;
-  --color-ivory: #F0EBE1;
-  --color-ivory-dim: #E5DDCC;
+  --color-ivory: #FAF6EB;
+  --color-ivory-dim: #EFE4CD;
   --color-line: rgba(240, 235, 225, 0.14);
 
   --font-display: "Fraunces", serif;
@@ -20,8 +20,8 @@
     scroll-behavior: smooth;
   }
   body {
-    background-color: #1C1A17;
-    color: #F0EBE1;
+    background-color: #151309;
+    color: #FAF6EB;
     font-family: "Work Sans", sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
@@ -37,16 +37,16 @@
 
 .grain-line {
   fill: none;
-  stroke: #C89F6E;
+  stroke: #E2B248;
   stroke-width: 1;
   opacity: 0.4;
 }
 
 /* Custom wood-grain visual pattern using SVG */
 .bg-grain {
-  background-color: #1C1A17;
-  background-image: radial-gradient(ellipse at 75% 30%, rgba(200, 159, 110, 0.08), transparent 60%),
-                    linear-gradient(180deg, #1C1A17 0%, #14120E 100%);
+  background-color: #151309;
+  background-image: radial-gradient(ellipse at 75% 30%, rgba(226, 178, 72, 0.12), transparent 60%),
+                    linear-gradient(180deg, #151309 0%, #0C0A04 100%);
 }
 
 .custom-scrollbar::-webkit-scrollbar {
@@ -59,12 +59,12 @@
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #C89F6E;
+  background: #E2B248;
   border-radius: 3px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #E5DDCC;
+  background: #EFE4CD;
 }
 
 /* Subtle border outline for premium UI card look */
@@ -75,12 +75,26 @@
   content: '';
   position: absolute;
   inset: 0;
-  border: 1px solid rgba(200, 159, 110, 0.15);
+  border: 1px solid rgba(226, 178, 72, 0.15);
   pointer-events: none;
   transition: border-color 0.3s ease;
 }
 .card-border-glow:hover::after {
-  border-color: rgba(200, 159, 110, 0.4);
+  border-color: rgba(226, 178, 72, 0.4);
+}
+
+/* Custom 3-color gradient of Yellow, Light Brown, and White for container boxes */
+.box-gradient {
+  background: linear-gradient(135deg, rgba(234, 179, 8, 0.08) 0%, rgba(226, 178, 72, 0.14) 50%, rgba(255, 255, 255, 0.06) 100%);
+  border: 1px solid rgba(226, 178, 72, 0.3);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.35);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.box-gradient:hover {
+  background: linear-gradient(135deg, rgba(234, 179, 8, 0.16) 0%, rgba(226, 178, 72, 0.24) 50%, rgba(255, 255, 255, 0.1) 100%);
+  border-color: rgba(234, 179, 8, 0.55);
+  box-shadow: 0 15px 35px rgba(234, 179, 8, 0.12);
 }
 
 @keyframes fadeIn {

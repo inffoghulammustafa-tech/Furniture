@@ -98,11 +98,14 @@ export default function Hero({ onExploreCatalog, onOpenCustomizer }: HeroProps) 
           initial={{ opacity: 0.85 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="relative overflow-hidden rounded-3xl bg-stone-950 text-white min-h-[550px] sm:min-h-[580px] lg:min-h-[640px] flex flex-col justify-between p-6 sm:p-10 md:p-12 shadow-2xl border border-stone-800 transition-all duration-700 bg-cover bg-center animate-fade-in"
-          style={{
-            backgroundImage: `linear-gradient(to right, rgba(20, 18, 16, 0.95) 0%, rgba(20, 18, 16, 0.85) 50%, rgba(20, 18, 16, 0.95) 100%), url('${sliderSlides[currentSlideIndex].image}')`
-          }}
+          className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#1c1917] to-[#0c0a09] text-white min-h-[500px] sm:min-h-[580px] lg:min-h-[600px] flex flex-col justify-between p-6 sm:p-10 md:p-12 shadow-2xl border border-stone-800 transition-all duration-700 animate-fade-in"
         >
+          {/* Parallax Fixed Background Image Overlay */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed opacity-25 pointer-events-none transition-all duration-700 z-0"
+            style={{ backgroundImage: `url('${sliderSlides[currentSlideIndex].image}')` }}
+          />
+
           {/* Top Badge Row */}
           <div className="relative z-10 flex justify-between items-center w-full">
             <span className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-amber-500/20 text-amber-300 border border-amber-500/30 rounded-full text-[10px] sm:text-xs uppercase tracking-widest font-bold">
@@ -120,7 +123,7 @@ export default function Hero({ onExploreCatalog, onOpenCustomizer }: HeroProps) 
               </h2>
               
               {/* Split layout translucent card */}
-              <div className="flex bg-stone-950/85 backdrop-blur-md rounded-2xl border border-white/10 max-w-lg w-full overflow-hidden shadow-2xl text-left">
+              <div className="flex bg-stone-900/90 backdrop-blur-md rounded-2xl border border-white/10 max-w-lg w-full overflow-hidden shadow-2xl text-left">
                 {/* Left text portion */}
                 <div className="p-5 sm:p-6 flex-1 space-y-3">
                   <h4 className="text-xs sm:text-sm font-bold text-amber-400 uppercase tracking-widest">
@@ -162,13 +165,13 @@ export default function Hero({ onExploreCatalog, onOpenCustomizer }: HeroProps) 
               </div>
             </div>
 
-            {/* Right column: Image is displayed completely without cropping */}
+            {/* Right column: Image is displayed completely and beautifully with a larger size */}
             <div className="lg:col-span-5 flex justify-center items-center">
-              <div className="relative w-full max-w-[320px] sm:max-w-[360px] lg:max-w-[420px] aspect-[4/5] bg-stone-900/40 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 shadow-2xl flex items-center justify-center p-3">
+              <div className="relative w-full max-w-[340px] sm:max-w-[420px] lg:max-w-[480px] aspect-[4/5] bg-stone-900/60 backdrop-blur-sm rounded-3xl overflow-hidden border border-white/10 shadow-2xl flex items-center justify-center p-2 sm:p-3">
                 <img
                   src={sliderSlides[currentSlideIndex].image}
                   alt={sliderSlides[currentSlideIndex].title}
-                  className="max-w-full max-h-full object-contain rounded-xl hover:scale-[1.02] transition-transform duration-500"
+                  className="max-w-full max-h-full object-contain rounded-2xl hover:scale-[1.03] transition-transform duration-500 shadow-md"
                   referrerPolicy="no-referrer"
                 />
               </div>
