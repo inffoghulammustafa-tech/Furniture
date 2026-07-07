@@ -30,56 +30,56 @@ const NEW_ARRIVALS = [
     id: 'arr-1',
     name: 'High Living Sissoo Crafted Wood 8 Chair Fancy Dining Table Set',
     tag: 'Luxury Dining',
-    image: 'https://images.unsplash.com/photo-1615066390971-03e4e1c36ddf?auto=format&fit=crop&q=80&w=600',
+    image: 'https://furnitureholz.com/wp-content/uploads/2021/04/Sissoo-Wood-Glass-Top-Fancy-Dining-Table-600x420.jpg',
     status: 'Available'
   },
   {
     id: 'arr-2',
     name: 'Carving Shisham Wood High Back Bedroom Chair Set',
     tag: 'Sold Out',
-    image: 'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&q=80&w=600',
+    image: 'https://furnitureholz.com/wp-content/uploads/2021/04/High-Back-Shisham-Wood-Bedroom-Chair-600x420.jpg',
     status: 'Sold Out'
   },
   {
     id: 'arr-3',
     name: 'Pigeon Foot Carved Sissoo Wood Console',
     tag: 'Elegant Console',
-    image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&q=80&w=600',
+    image: 'https://i.pinimg.com/1200x/3d/ee/3a/3dee3a37b91acc6c757dfb70e6e35f4d.jpg',
     status: 'Available'
   },
   {
     id: 'arr-4',
     name: 'Black & Golden 8 Chairs Solid Acacia Wood Fancy Dining Table Set',
     tag: 'Black & Gold',
-    image: 'https://images.unsplash.com/photo-1617806118233-18e1db207f62?auto=format&fit=crop&q=80&w=600',
+    image: 'https://furnitureholz.com/wp-content/uploads/2021/04/Acacia-Dining-Room-Furniture-600x420.jpg',
     status: 'Available'
   },
   {
     id: 'arr-5',
     name: 'Shisham Wood Chase Ship Bedroom Chair',
     tag: 'Chaise Lounge',
-    image: 'https://images.unsplash.com/photo-1592078615290-033ee584e267?auto=format&fit=crop&q=80&w=600',
+    image: 'https://furnitureholz.com/wp-content/uploads/2021/04/Sissoo-Wood-Bedroom-Ship-Chair-600x420.jpg',
     status: 'Available'
   },
   {
     id: 'arr-6',
     name: 'Bergere Sissoo Wood Inlay Work Bedroom Chair Set',
     tag: 'Inlay Craft',
-    image: 'https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?auto=format&fit=crop&q=80&w=600',
+    image: 'https://furnitureholz.com/wp-content/uploads/2021/04/Bergere-Chair-Set-In-Pakistan-600x420.jpg',
     status: 'Available'
   },
   {
     id: 'arr-7',
     name: 'Sheesham Wood High Back Prince Red Velvet Bedroom Chair',
     tag: 'Prince Luxury',
-    image: 'https://images.unsplash.com/photo-1580481072645-022f9a6dbf27?auto=format&fit=crop&q=80&w=600',
+    image: 'https://i.pinimg.com/736x/fc/92/b8/fc92b87d8ba2c7aa252d8e162c624e7e.jpg',
     status: 'Available'
   },
   {
     id: 'arr-8',
     name: 'Tri-Angular Solid Acacia Wood Table With 6 Carved Chairs',
     tag: 'Sold Out',
-    image: 'https://images.unsplash.com/photo-1530018607912-eff2df114f12?auto=format&fit=crop&q=80&w=600',
+    image: 'https://furnitureholz.com/wp-content/uploads/2021/04/Triangular-6-Chairs-Dining-Table-Set-600x420.jpg',
     status: 'Sold Out'
   },
   // Page 2 (Premium Additional masterpieces)
@@ -216,6 +216,296 @@ const slideVariants = {
   })
 };
 
+interface ProductDetailData {
+  id: string;
+  title: string;
+  tmr: string;
+  sku: string;
+  color: string;
+  material: string;
+  polish: string;
+  style: string;
+  size: string;
+  images: string[];
+  status: string;
+  categories: string;
+}
+
+const PRODUCTS_DATABASE: Record<string, ProductDetailData> = {
+  "arr-1": {
+    id: "arr-1",
+    title: "High Living Sissoo Crafted Wood 8 Chair Fancy Dining Table Set",
+    tmr: "614251",
+    sku: "FH-10101",
+    color: "Walnut Polish, Cream Cushion",
+    material: "Solid Sissoo Wood (Sheesham)",
+    polish: "Glossy Melamine Polish, Premium Fabric",
+    style: "Mughal Craft Dining",
+    size: "9 Pieces (8 Chairs + 1 Table)",
+    images: [
+      "https://furnitureholz.com/wp-content/uploads/2021/04/Sissoo-Wood-Glass-Top-Fancy-Dining-Table-600x420.jpg",
+      "https://furnitureholz.com/wp-content/uploads/2021/04/Acacia-Dining-Room-Furniture-600x420.jpg"
+    ],
+    status: "Available",
+    categories: "Chair & Tables, Dining Room, Luxury Sets"
+  },
+  "arr-2": {
+    id: "arr-2",
+    title: "Carving Shisham Wood High Back Bedroom Chair Set",
+    tmr: "614252",
+    sku: "FH-10102",
+    color: "Teak Brown, Ivory Cushion",
+    material: "Solid Shisham Wood",
+    polish: "Matte Lacquer Polish, Luxury Velvet",
+    style: "High Back Carved",
+    size: "3 Pieces (2 Chairs + 1 Table)",
+    images: [
+      "https://furnitureholz.com/wp-content/uploads/2021/04/High-Back-Shisham-Wood-Bedroom-Chair-600x420.jpg",
+      "https://furnitureholz.com/wp-content/uploads/2021/04/Bergere-Chair-Set-In-Pakistan-600x420.jpg"
+    ],
+    status: "Sold Out",
+    categories: "Chair & Tables, Sofa, Chair & Deewan"
+  },
+  "arr-3": {
+    id: "arr-3",
+    title: "Pigeon Foot Carved Sissoo Wood Console",
+    tmr: "614253",
+    sku: "FH-10103",
+    color: "Antique Gold Accent, Dark Oak",
+    material: "Solid Sissoo Wood",
+    polish: "Hand-rubbed Polish",
+    style: "Pigeon Foot Baroque",
+    size: "1 Piece",
+    images: [
+      "https://i.pinimg.com/1200x/3d/ee/3a/3dee3a37b91acc6c757dfb70e6e35f4d.jpg",
+      "https://furnitureholz.com/wp-content/uploads/2021/04/Console-Shisham-Carved-Wood-600x420.jpg"
+    ],
+    status: "Available",
+    categories: "Console & Mirrors, Lobby Luxury, Solid Wood"
+  },
+  "arr-4": {
+    id: "arr-4",
+    title: "Black & Golden 8 Chairs Solid Acacia Wood Fancy Dining Table Set",
+    tmr: "614254",
+    sku: "FH-10104",
+    color: "Jet Black with Gold Leaf Gilding",
+    material: "Solid Acacia Wood",
+    polish: "High Gloss Black Polish, Golden Velvet Cushion",
+    style: "Victorian Luxury",
+    size: "9 Pieces (8 Chairs + 1 Table)",
+    images: [
+      "https://furnitureholz.com/wp-content/uploads/2021/04/Acacia-Dining-Room-Furniture-600x420.jpg",
+      "https://furnitureholz.com/wp-content/uploads/2021/04/Sissoo-Wood-Glass-Top-Fancy-Dining-Table-600x420.jpg"
+    ],
+    status: "Available",
+    categories: "Chair & Tables, Dining Room, Special Edition"
+  },
+  "arr-5": {
+    id: "arr-5",
+    title: "Shisham Wood Chase Ship Bedroom Chair",
+    tmr: "614255",
+    sku: "FH-10105",
+    color: "Rosewood Mahogany, Emerald Velvet",
+    material: "Solid Shisham Wood",
+    polish: "Natural Gloss Polish, Quilted Velvet",
+    style: "Ship Deck Chaise Lounge",
+    size: "1 Piece",
+    images: [
+      "https://furnitureholz.com/wp-content/uploads/2021/04/Sissoo-Wood-Bedroom-Ship-Chair-600x420.jpg",
+      "https://furnitureholz.com/wp-content/uploads/2021/04/Chase-Lounge-Bedroom-Sofa-Chair-600x420.jpg"
+    ],
+    status: "Available",
+    categories: "Chair & Tables, Sofa & Deewan, Sofa, Chair & Deewan"
+  },
+  "arr-6": {
+    id: "arr-6",
+    title: "Bergere Sissoo Wood Inlay Work Bedroom Chair Set",
+    tmr: "614256",
+    sku: "FH-10106",
+    color: "Honey Oak, Brocade Floral Upholstery",
+    material: "Sissoo Wood (Sheesham) with Ivory Wood Inlay",
+    polish: "Inlay Lacquered Finish",
+    style: "French Bergere Classic",
+    size: "3 Pieces (2 Chairs + 1 Table)",
+    images: [
+      "https://furnitureholz.com/wp-content/uploads/2021/04/Bergere-Chair-Set-In-Pakistan-600x420.jpg",
+      "https://furnitureholz.com/wp-content/uploads/2021/04/High-Back-Shisham-Wood-Bedroom-Chair-600x420.jpg"
+    ],
+    status: "Available",
+    categories: "Chair & Tables, Sofa, Chair & Deewan"
+  },
+  "arr-7": {
+    id: "arr-7",
+    title: "Sheesham Wood High Back Prince Red Velvet Bedroom Chair",
+    tmr: "614257",
+    sku: "FH-10107",
+    color: "Deep Mahogany with Royal Crimson Red",
+    material: "Solid Sheesham Wood",
+    polish: "Satin Polish, High-density Foam & Royal Red Velvet",
+    style: "Prince High-Back Royal",
+    size: "1 Piece",
+    images: [
+      "https://i.pinimg.com/736x/fc/92/b8/fc92b87d8ba2c7aa252d8e162c624e7e.jpg",
+      "https://furnitureholz.com/wp-content/uploads/2021/04/High-Back-Shisham-Wood-Bedroom-Chair-600x420.jpg"
+    ],
+    status: "Available",
+    categories: "Chair & Tables, Sofa, Chair & Deewan"
+  },
+  "arr-8": {
+    id: "arr-8",
+    title: "Tri-Angular Solid Acacia Wood Table With 6 Carved Chairs",
+    tmr: "614258",
+    sku: "FH-10108",
+    color: "Natural Acacia Honey Finish",
+    material: "Solid Acacia Hardwood",
+    polish: "Heat-Resistant Polyurethane Polish",
+    style: "Rustic Tri-Angular Geometric",
+    size: "7 Pieces (6 Chairs + 1 Table)",
+    images: [
+      "https://furnitureholz.com/wp-content/uploads/2021/04/Triangular-6-Chairs-Dining-Table-Set-600x420.jpg",
+      "https://furnitureholz.com/wp-content/uploads/2021/04/Acacia-Dining-Room-Furniture-600x420.jpg"
+    ],
+    status: "Sold Out",
+    categories: "Chair & Tables, Dining Room, Special Shapes"
+  },
+  "arr-9": {
+    id: "arr-9",
+    title: "High Living L Shape 7 Seater Velvet Full Gauge Solid Wood Sofa",
+    tmr: "614259",
+    sku: "FH-10109",
+    color: "Taupe/Ash Grey Velvet",
+    material: "Solid Keekar Wood Frame with Shisham Feet",
+    polish: "Premium Velvet Tufted Poshish, Master Molty Foam",
+    style: "Modern Chesterfield L-Shape",
+    size: "7 Seater (3+2+1+Corner)",
+    images: [
+      "https://furnitureholz.com/wp-content/uploads/2021/04/8-Seater-Sofa-Set-600x420.jpg",
+      "https://furnitureholz.com/wp-content/uploads/2021/04/Chase-Lounge-Bedroom-Sofa-Chair-600x420.jpg"
+    ],
+    status: "Available",
+    categories: "Sofa & Deewan, Sofa, Chair & Deewan"
+  },
+  "arr-10": {
+    id: "arr-10",
+    title: "Shisham Wood Chinioti Swing / Jhula with Brass Chains",
+    tmr: "614260",
+    sku: "FH-10110",
+    color: "Antique Dark Walnut, Maroon Seat Cushion",
+    material: "Premium Solid Shisham Wood, Solid Brass Chains",
+    polish: "Chinioti Lacquer Shellac Polish, Velvet Cushion",
+    style: "Royal Chinioti Handcrafted",
+    size: "1 Jhula Unit (Includes Brass Chains)",
+    images: [
+      "https://furnitureholz.com/wp-content/uploads/2021/04/Chinioti-Shisham-Wood-Jhola-600x420.jpg",
+      "https://i.pinimg.com/1200x/8c/1d/64/8c1d6412275f03784cca7824e7f0c317.jpg"
+    ],
+    status: "Available",
+    categories: "Swings & Jhulas, Traditional Lobby, Solid Wood"
+  },
+  "arr-11": {
+    id: "arr-11",
+    title: "Versace Inlay Crafted Sissoo Wood 3 Table Nest Set",
+    tmr: "614261",
+    sku: "FH-10111",
+    color: "Rich Espresso, White Wood Inlay Pattern",
+    material: "Solid Sissoo Wood (Sarsoot)",
+    polish: "High-Gloss Inlay Polish",
+    style: "Italian-Inspired Versace Inlay",
+    size: "3-Piece Nest Set (Small, Medium, Large)",
+    images: [
+      "https://furnitureholz.com/wp-content/uploads/2021/04/Versace-Shisham-Wood-3-Table-Net-Set-600x420.jpg",
+      "https://furnitureholz.com/wp-content/uploads/2021/04/Acacia-Dining-Room-Furniture-600x420.jpg"
+    ],
+    status: "Available",
+    categories: "Tables & Nest, Living Room Accents"
+  },
+  "arr-12": {
+    id: "arr-12",
+    title: "Chinioti Crafted Silver Deco Moora Chair Set",
+    tmr: "614262",
+    sku: "FH-10112",
+    color: "Deco Silver Paint, Silver Brocade Fabric",
+    material: "Solid Shisham Wood Frame",
+    polish: "Deco Paint Finish with Master Foam Seating",
+    style: "Traditional Royal Moora",
+    size: "3 Pieces (2 Moora Chairs + 1 Central Table)",
+    images: [
+      "https://furnitureholz.com/wp-content/uploads/2021/04/Chinioti-Moora-Chair-600x420.jpg",
+      "https://furnitureholz.com/wp-content/uploads/2021/04/Bergere-Chair-Set-In-Pakistan-600x420.jpg"
+    ],
+    status: "Available",
+    categories: "Chair & Tables, Sofa, Chair & Deewan"
+  },
+  "arr-13": {
+    id: "arr-13",
+    title: "Mughal Heritage Handcarved Solid Teak Console Mirror",
+    tmr: "614263",
+    sku: "FH-10113",
+    color: "Golden Brown Teak Gloss",
+    material: "Solid Burma Teak & Shisham Wood",
+    polish: "Teak Varnish / French Polish",
+    style: "Mughal Floral Carvings",
+    size: "2 Pieces (1 Console Table + 1 Mirror Frame)",
+    images: [
+      "https://furnitureholz.com/wp-content/uploads/2021/04/Console-Shisham-Carved-Wood-600x420.jpg",
+      "https://i.pinimg.com/1200x/3d/ee/3a/3dee3a37b91acc6c757dfb70e6e35f4d.jpg"
+    ],
+    status: "Available",
+    categories: "Console & Mirrors, Lobby Entryway"
+  },
+  "arr-14": {
+    id: "arr-14",
+    title: "Royal Sovereign Double Cushion Sheesham Rocking Chair",
+    tmr: "614264",
+    sku: "FH-10114",
+    color: "Chestnut Brown, Velvet Blue Cushion",
+    material: "Solid Sheesham Wood",
+    polish: "Hand-Waxed Polish, Double Padded Velvet Seating",
+    style: "Sovereign Ergonomic Rocker",
+    size: "1 Rocking Chair Unit",
+    images: [
+      "https://furnitureholz.com/wp-content/uploads/2021/04/Chase-Lounge-Bedroom-Sofa-Chair-600x420.jpg",
+      "https://furnitureholz.com/wp-content/uploads/2021/04/Sissoo-Wood-Bedroom-Ship-Chair-600x420.jpg"
+    ],
+    status: "Available",
+    categories: "Chair & Tables, Sofa, Chair & Deewan"
+  },
+  "arr-15": {
+    id: "arr-15",
+    title: "Kalyar Geometric Lattice Carved Partition Screen",
+    tmr: "614265",
+    sku: "FH-10115",
+    color: "Antique Dark Oak Finish",
+    material: "Solid Sissoo Wood & Brass Pins",
+    polish: "Natural Wax Lacquer Finish",
+    style: "Kalyar Pinjrakari Lattice",
+    size: "4-Panel Folding Screen",
+    images: [
+      "https://i.pinimg.com/1200x/8c/1d/64/8c1d6412275f03784cca7824e7f0c317.jpg",
+      "https://furnitureholz.com/wp-content/uploads/2021/04/Console-Shisham-Carved-Wood-600x420.jpg"
+    ],
+    status: "Available",
+    categories: "Partition Screens, Room Dividers"
+  },
+  "arr-16": {
+    id: "arr-16",
+    title: "Presidential Hand-Sculptured Walnut Dressing Table",
+    tmr: "614266",
+    sku: "FH-10116",
+    color: "Bespoke Rich Walnut Finish, Gold Highlights",
+    material: "Premium Solid Walnut & Shisham Wood",
+    polish: "Satin Walnut Polish, Solid Wood Drawers",
+    style: "Imperial Rococo Carvings",
+    size: "2 Pieces (Dressing Table + Mirror Frame)",
+    images: [
+      "https://i.pinimg.com/1200x/b3/2c/13/b32c136f377ff5adbb10b7fb3c5d1f38.jpg",
+      "https://i.pinimg.com/1200x/3d/ee/3a/3dee3a37b91acc6c757dfb70e6e35f4d.jpg"
+    ],
+    status: "Available",
+    categories: "Dressing Tables, Vanity Suite, Bedroom Luxury"
+  }
+};
+
 export default function Collections({ onSelectCollection }: CollectionsProps) {
   const [currentPage, setCurrentPage] = useState(0); // 0 or 1
   const [slideDirection, setSlideDirection] = useState(1); // 1 or -1
@@ -223,6 +513,17 @@ export default function Collections({ onSelectCollection }: CollectionsProps) {
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
   
+  const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
+  const [activeDetailImage, setActiveDetailImage] = useState<string>('');
+
+  const handleOpenProductDetail = (productId: string) => {
+    setSelectedProduct(productId);
+    const product = PRODUCTS_DATABASE[productId];
+    if (product) {
+      setActiveDetailImage(product.images[0]);
+    }
+  };
+
   // Form state
   const [clientName, setClientName] = useState('');
   const [clientPhone, setClientPhone] = useState('');
@@ -332,11 +633,14 @@ export default function Collections({ onSelectCollection }: CollectionsProps) {
                     key={item.id}
                     className="group box-gradient rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between border border-line hover:border-oak/40"
                   >
-                    <div className="relative aspect-video overflow-hidden bg-stone-950">
+                    <div 
+                      onClick={() => handleOpenProductDetail(item.id)}
+                      className="relative aspect-video overflow-hidden bg-stone-950 cursor-pointer"
+                    >
                       <img 
                         src={item.image} 
                         alt={item.name} 
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100 cursor-pointer"
                         referrerPolicy="no-referrer"
                       />
                       {item.status === 'Sold Out' ? (
@@ -350,7 +654,10 @@ export default function Collections({ onSelectCollection }: CollectionsProps) {
                       )}
                     </div>
                     <div className="p-5 flex-grow flex flex-col justify-between space-y-4">
-                      <h4 className="text-xs md:text-sm font-semibold text-ivory leading-snug group-hover:text-oak transition-colors min-h-[40px] font-sans">
+                      <h4 
+                        onClick={() => handleOpenProductDetail(item.id)}
+                        className="text-xs md:text-sm font-semibold text-ivory leading-snug group-hover:text-oak transition-colors min-h-[40px] font-sans cursor-pointer"
+                      >
                         {item.name}
                       </h4>
                       {item.status === 'Sold Out' ? (
@@ -600,6 +907,177 @@ export default function Collections({ onSelectCollection }: CollectionsProps) {
             </motion.div>
           </div>
         )}
+      </AnimatePresence>
+
+      {/* ================= PRODUCT DETAILS OVERLAY MODAL ================= */}
+      <AnimatePresence>
+        {selectedProduct && PRODUCTS_DATABASE[selectedProduct] && (() => {
+          const product = PRODUCTS_DATABASE[selectedProduct];
+          return (
+            <div className="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4">
+              {/* Backdrop */}
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setSelectedProduct(null)}
+                className="fixed inset-0 bg-stone-950/85 backdrop-blur-md"
+              />
+
+              {/* Modal Wrapper */}
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                className="relative w-full max-w-5xl rounded-3xl bg-[#151309] text-ivory shadow-2xl border border-oak/35 p-6 md:p-10 z-10 font-sans max-h-[90vh] overflow-y-auto scrollbar-thin scrollbar-thumb-oak/20"
+              >
+                {/* Close Button */}
+                <button 
+                  onClick={() => setSelectedProduct(null)} 
+                  className="absolute top-4 right-4 p-2 text-ivory-dim/50 hover:text-oak transition-colors z-20 cursor-pointer"
+                  aria-label="Close product details"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+
+                {/* Main Content Container (Flex/Grid) */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                  
+                  {/* Left Side: Images Section */}
+                  <div className="space-y-4">
+                    <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-line/40 bg-stone-950">
+                      <img 
+                        id="product-main-image"
+                        src={activeDetailImage || product.images[0]} 
+                        alt={product.title} 
+                        className="w-full h-full object-cover transition-all duration-300"
+                        referrerPolicy="no-referrer"
+                      />
+                      {product.status === 'Sold Out' ? (
+                        <span className="absolute top-3 right-3 bg-walnut text-[9px] text-white px-2.5 py-1 rounded-md font-bold uppercase tracking-wider border border-oak/30">
+                          Sold Out
+                        </span>
+                      ) : (
+                        <span className="absolute top-3 right-3 bg-[#151309]/80 backdrop-blur-md text-[9px] text-oak px-2.5 py-1 rounded-md font-bold uppercase tracking-wider border border-line">
+                          {product.status}
+                        </span>
+                      )}
+                    </div>
+                    
+                    {/* Thumbnail Container */}
+                    <div className="flex gap-3 flex-wrap" id="thumb-container">
+                      {product.images.map((imgUrl, idx) => (
+                        <img 
+                          key={idx}
+                          src={imgUrl} 
+                          alt={`${product.title} thumbnail ${idx + 1}`} 
+                          onClick={() => setActiveDetailImage(imgUrl)}
+                          className={`w-20 h-16 object-cover cursor-pointer border rounded-lg transition-all ${
+                            (activeDetailImage || product.images[0]) === imgUrl 
+                              ? 'border-oak scale-105 shadow-md bg-oak/10' 
+                              : 'border-line/40 hover:border-oak/60 hover:scale-102'
+                          }`}
+                          referrerPolicy="no-referrer"
+                        />
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Right Side: Details Section */}
+                  <div className="flex flex-col justify-between space-y-6 text-left">
+                    <div>
+                      <h1 className="text-xl md:text-3xl font-display font-semibold text-ivory tracking-tight mb-2" id="product-title">
+                        {product.title}
+                      </h1>
+                      <div className="text-xs font-mono text-sage mb-4 flex items-center gap-2">
+                        <span>TMR #<span id="product-tmr" className="font-bold">{product.tmr}</span></span>
+                        <span className="text-line/40">|</span>
+                        <span>SKU: <span id="product-sku" className="font-bold">{product.sku}</span></span>
+                      </div>
+
+                      {product.status === 'Sold Out' ? (
+                        <button 
+                          onClick={() => {
+                            setSelectedProduct(null);
+                            handleOpenInquiry(`${product.title} (Backorder Request)`);
+                          }}
+                          className="px-6 py-3 bg-[#1e1c18] hover:bg-stone-900 border border-line text-white font-bold uppercase tracking-wider text-xs rounded-xl transition-all shadow-md cursor-pointer mb-6"
+                        >
+                          Backorder Query
+                        </button>
+                      ) : (
+                        <button 
+                          onClick={() => {
+                            setSelectedProduct(null);
+                            handleOpenInquiry(product.title);
+                          }}
+                          className="px-6 py-3 bg-oak hover:bg-white hover:text-charcoal text-white font-bold uppercase tracking-wider text-xs rounded-xl transition-all shadow-md cursor-pointer mb-6"
+                        >
+                          Call For Price
+                        </button>
+                      )}
+
+                      <ul className="space-y-2 text-xs md:text-sm text-ivory-dim/80 list-disc pl-4 leading-relaxed font-sans mb-6">
+                        <li>Made of {product.material}</li>
+                        {product.title.toLowerCase().includes('chair') || product.title.toLowerCase().includes('sofa') ? (
+                          <>
+                            <li>Molty Foam Seating & Stuffing</li>
+                            <li>Velvet Quilted Upholstery/ Poshish</li>
+                          </>
+                        ) : null}
+                        <li>Suitable for Bedroom, Lounge and Outdoor</li>
+                        <li>Customer can Customize Fabric</li>
+                        <li>Design May Vary Slightly from Given Picture</li>
+                        <li>Prices are Negotiable</li>
+                      </ul>
+                    </div>
+
+                    <div className="text-xs text-ivory-dim/60 font-mono space-y-1 pt-4 border-t border-line/40">
+                      <div><strong>SKU:</strong> <span className="text-oak">{product.sku}</span></div>
+                      <div><strong>Categories:</strong> <span className="text-sage">{product.categories}</span></div>
+                    </div>
+                  </div>
+
+                </div>
+
+                {/* Additional Information Section (Table) */}
+                <div className="mt-12 pt-8 border-t border-line/40">
+                  <div className="text-center font-mono font-medium text-xs tracking-widest text-oak uppercase mb-6">
+                    Additional Information
+                  </div>
+                  
+                  <div className="overflow-hidden rounded-xl border border-line/30 bg-charcoal/20">
+                    <table className="w-full text-left border-collapse font-sans text-xs md:text-sm">
+                      <tbody>
+                        <tr className="border-b border-line/20 hover:bg-white/2">
+                          <td className="p-4 w-1/3 font-bold uppercase text-[10px] tracking-wider text-ivory-dim/70">Color</td>
+                          <td id="table-color" className="p-4 text-ivory">{product.color}</td>
+                        </tr>
+                        <tr className="border-b border-line/20 hover:bg-white/2">
+                          <td className="p-4 font-bold uppercase text-[10px] tracking-wider text-ivory-dim/70">Material</td>
+                          <td id="table-material" className="p-4 text-ivory">{product.material}</td>
+                        </tr>
+                        <tr className="border-b border-line/20 hover:bg-white/2">
+                          <td className="p-4 font-bold uppercase text-[10px] tracking-wider text-ivory-dim/70">Polish/ Upholstery</td>
+                          <td id="table-polish" className="p-4 text-ivory">{product.polish}</td>
+                        </tr>
+                        <tr className="border-b border-line/20 hover:bg-white/2">
+                          <td className="p-4 font-bold uppercase text-[10px] tracking-wider text-ivory-dim/70">Style</td>
+                          <td id="table-style" className="p-4 text-ivory">{product.style}</td>
+                        </tr>
+                        <tr className="hover:bg-white/2">
+                          <td className="p-4 font-bold uppercase text-[10px] tracking-wider text-ivory-dim/70">Size/ Pieces</td>
+                          <td id="table-size" className="p-4 text-ivory">{product.size}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+              </motion.div>
+            </div>
+          );
+        })()}
       </AnimatePresence>
 
       {/* ================= TOAST STATUS BANNER ================= */}
