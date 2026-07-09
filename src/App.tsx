@@ -11,6 +11,7 @@ import ServiceFeatures from './components/ServiceFeatures';
 import Collections from './components/Collections';
 import Catalog from './components/Catalog';
 import Configurator from './components/Configurator';
+import CategoryPage from './components/CategoryPage';
 import Craftsmanship from './components/Craftsmanship';
 import Showrooms from './components/Showrooms';
 import VirtualShowroom from './components/VirtualShowroom';
@@ -27,6 +28,7 @@ export default function App() {
   // Global States
   const [cart, setCart] = useState<QuoteItem[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [selectedConfigProduct, setSelectedConfigProduct] = useState<Product | null>(null);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isAdvisorOpen, setIsAdvisorOpen] = useState(false);
@@ -151,6 +153,11 @@ export default function App() {
     scrollToId('configurator');
   };
 
+  const handleGoHome = () => {
+    setActiveCategory(null);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen bg-charcoal text-ivory relative selection:bg-oak selection:text-charcoal flex flex-col justify-between">
       
@@ -159,52 +166,65 @@ export default function App() {
         cart={cart}
         onOpenCart={() => setIsCartOpen(true)}
         onOpenAdvisor={() => setIsAdvisorOpen(true)}
-        onSetCategory={setSelectedCategory}
+        onOpenCategory={setActiveCategory}
+        onGoHome={handleGoHome}
       />
 
       {/* Main Sections */}
-      <main>
-        {/* Hero Section */}
-        <Hero
-          onExploreCatalog={() => scrollToId('catalog')}
-          onOpenCustomizer={() => scrollToId('configurator')}
-        />
+      <main className="flex-1">
+        {activeCategory ? (
+          <CategoryPage
+            category={activeCategory}
+            onAddProductToQuote={handleAddProductToQuote}
+            onConfigureProduct={handleConfigureProductFromCatalog}
+          />
+        ) : (
+          <>
+            {/* Hero Section */}
+            <Hero
+              onExploreCatalog={() => scrollToId('catalog')}
+              onOpenCustomizer={() => scrollToId('configurator')}
+            />
 
-        {/* Service Features Row */}
-        <ServiceFeatures />
+            {/* Service Features Row */}
+            <ServiceFeatures />
 
-        {/* Collections Room Directory */}
-        <Collections
-          onSelectCollection={handleSelectCategoryFromCollections}
-          onOpenPrivacy={() => setIsPrivacyOpen(true)}
-        />
+            {/* Collections Room Directory */}
+            <Collections
+              onSelectCollection={(cat) => {
+                setActiveCategory(cat);
+              }}
+              onOpenPrivacy={() => setIsPrivacyOpen(true)}
+            />
 
-        {/* Product Catalog Display and inspection detail modals */}
-        <Catalog
-          selectedCategory={selectedCategory}
-          onSetCategory={setSelectedCategory}
-          onAddProductToQuote={handleAddProductToQuote}
-          onConfigureProduct={handleConfigureProductFromCatalog}
-          cart={cart}
-        />
+            {/* Product Catalog Display and inspection detail modals */}
+            <Catalog
+              selectedCategory={selectedCategory}
+              onSetCategory={setSelectedCategory}
+              onAddProductToQuote={handleAddProductToQuote}
+              onConfigureProduct={handleConfigureProductFromCatalog}
+              cart={cart}
+            />
 
-        {/* Bespoke Furniture Customizer Configurator Studio */}
-        <Configurator
-          initialSelectedProduct={selectedConfigProduct}
-          onAddCustomConfigToQuote={handleAddCustomConfigToQuote}
-        />
+            {/* Bespoke Furniture Customizer Configurator Studio */}
+            <Configurator
+              initialSelectedProduct={selectedConfigProduct}
+              onAddCustomConfigToQuote={handleAddCustomConfigToQuote}
+            />
 
-        {/* Process and Handcrafted Philosophy Section */}
-        <Craftsmanship />
+            {/* Process and Handcrafted Philosophy Section */}
+            <Craftsmanship />
 
-        {/* Showrooms Section */}
-        <VirtualShowroom onAddMessageToast={triggerToast} />
+            {/* Showrooms Section */}
+            <VirtualShowroom onAddMessageToast={triggerToast} />
 
-        {/* Interior Services Section */}
-        <InteriorServices />
+            {/* Interior Services Section */}
+            <InteriorServices />
 
-        {/* Client audits reviews list and rating feedback */}
-        <Reviews />
+            {/* Client audits reviews list and rating feedback */}
+            <Reviews />
+          </>
+        )}
       </main>
 
       {/* Footer Block */}

@@ -72,6 +72,8 @@ Your personality:
 - Focus on solid timber education. Never recommend laminate, MDF, particleboard, veneer, or cheap glue solutions. Advocate for natural oil, beeswax, and pure timber.
 - Avoid aggressive sales-pitching. Instead, give honest advice, even if it means telling a client a piece won't fit their room or recommending a smaller, cheaper setup.
 
+You are here to assist with design, care, and TROUBLESHOOTING. If a user presents a problem (e.g., warped wood, joint failure, surface damage, maintenance issue), provide a practical, structural, and professional solution, explaining the underlying cause and the correct repair approach using traditional techniques. 
+
 Provide practical design layout tips, wood care recommendations, or answer structural timber questions. Use clear markdown formatting in your responses.`;
 
     const response = await aiClient.models.generateContent({
@@ -87,10 +89,18 @@ Provide practical design layout tips, wood care recommendations, or answer struc
     res.json({ text: replyText });
   } catch (error: any) {
     console.error("Gemini Advisor Error:", error);
-    res.status(500).json({
-      error: "The workshop advisor is busy right now. Please try again in a moment.",
-      details: error.message
-    });
+    // Specifically handle 403 Forbidden
+    if (error.status === 403) {
+      res.status(403).json({
+        error: "Access Denied: The project is not authorized to use the Gemini API. Please check your Project Permissions and API Key in the Google Cloud Console or AI Studio.",
+        details: error.message
+      });
+    } else {
+      res.status(500).json({
+        error: "The workshop advisor is busy right now. Please try again in a moment.",
+        details: error.message
+      });
+    }
   }
 });
 

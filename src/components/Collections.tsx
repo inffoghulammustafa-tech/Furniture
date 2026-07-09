@@ -1044,9 +1044,13 @@ export default function Collections({ onSelectCollection, onOpenPrivacy }: Colle
                     
                     {/* ADDRESS COLUMN */}
                     <div className="flex flex-col items-center space-y-4">
-                      <div className="p-3 bg-white rounded-full shadow-sm border border-stone-100/80 text-stone-900">
+                      <motion.div 
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                        className="p-3 bg-white rounded-full shadow-sm border border-stone-100/80 text-stone-900"
+                      >
                         <Home className="w-6 h-6 stroke-[1.25]" />
-                      </div>
+                      </motion.div>
                       <h4 className="font-sans text-[11px] font-bold tracking-[0.2em] text-stone-950 uppercase">
                         ADDRESS
                       </h4>
@@ -1064,9 +1068,13 @@ export default function Collections({ onSelectCollection, onOpenPrivacy }: Colle
 
                     {/* PHONE NUMBER COLUMN */}
                     <div className="flex flex-col items-center space-y-4">
-                      <div className="p-3 bg-white rounded-full shadow-sm border border-stone-100/80 text-stone-900">
+                      <motion.div 
+                        whileHover={{ scale: 1.1, rotate: -5 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                        className="p-3 bg-white rounded-full shadow-sm border border-stone-100/80 text-stone-900"
+                      >
                         <Phone className="w-6 h-6 stroke-[1.25]" />
-                      </div>
+                      </motion.div>
                       <h4 className="font-sans text-[11px] font-bold tracking-[0.2em] text-stone-950 uppercase">
                         PHONE NUMBER
                       </h4>
@@ -1093,9 +1101,13 @@ export default function Collections({ onSelectCollection, onOpenPrivacy }: Colle
 
                     {/* EMAIL COLUMN */}
                     <div className="flex flex-col items-center space-y-4">
-                      <div className="p-3 bg-white rounded-full shadow-sm border border-stone-100/80 text-stone-900">
+                      <motion.div 
+                        whileHover={{ scale: 1.1, rotate: 10 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                        className="p-3 bg-white rounded-full shadow-sm border border-stone-100/80 text-stone-900"
+                      >
                         <Mail className="w-6 h-6 stroke-[1.25]" />
-                      </div>
+                      </motion.div>
                       <h4 className="font-sans text-[11px] font-bold tracking-[0.2em] text-stone-950 uppercase">
                         EMAIL
                       </h4>

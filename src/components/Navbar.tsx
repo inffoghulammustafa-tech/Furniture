@@ -12,10 +12,11 @@ interface NavbarProps {
   cart: QuoteItem[];
   onOpenCart: () => void;
   onOpenAdvisor: () => void;
-  onSetCategory: (cat: string) => void;
+  onOpenCategory: (cat: string) => void;
+  onGoHome: () => void;
 }
 
-export default function Navbar({ cart, onOpenCart, onOpenAdvisor, onSetCategory }: NavbarProps) {
+export default function Navbar({ cart, onOpenCart, onOpenAdvisor, onOpenCategory, onGoHome }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [hideHeader, setHideHeader] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -68,8 +69,7 @@ export default function Navbar({ cart, onOpenCart, onOpenAdvisor, onSetCategory 
 
   const handleCategoryNav = (cat: string) => {
     setMobileMenuOpen(false);
-    onSetCategory(cat);
-    scrollToSection('catalog');
+    onOpenCategory(cat);
   };
 
   const handleChildNav = (categoryKey: string, childName: string) => {
@@ -81,7 +81,7 @@ export default function Navbar({ cart, onOpenCart, onOpenAdvisor, onSetCategory 
 
   const handleScrollToTop = () => {
     setMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    onGoHome();
   };
 
   const categoriesWithChildren = [
